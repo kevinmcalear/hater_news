@@ -100,4 +100,16 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelectorAll('img').length == 0) {
     kittenGenerator.requestKittens();
   };
+
+  $.getJSON( "https://hacker-news.firebaseio.com/v0/user/KevinMcAlear.json", function( data ) {
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val + "</li>" );
+    });
+
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "body" );
+  });
 });

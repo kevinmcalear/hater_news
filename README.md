@@ -1,7 +1,17 @@
-hater_news
+![](https://d13yacurqjgara.cloudfront.net/users/3093/screenshots/797096/hn-logo-dribbble-shot_1x.png =x70) 
+Hater News
 ==========
 
 Haterz Gonna Hate. But now you know who the haterz are.
+
+The Idea.
+---------
+Using Scikit Learn's TfidfVectorizer and Logistic Regression you can start to build out a way to analyize all the comments a user ever has posted in Hacker News and rank them how big of a troll they are.
+
+
+How It's Built.
+---------
+Feel free to look under the hood.
 
 [The Classifier Data I'm Using.](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data)
 

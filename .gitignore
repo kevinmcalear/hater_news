@@ -3,3 +3,4 @@
 .ipynb_checkpoints
 data/
 data/*
+insults.csv

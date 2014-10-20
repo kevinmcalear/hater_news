@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Hater News. | Haterz gon' hate, but now you know who the haterz are.</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class='page'>
+    <h1>Find A Hater Score.</h1>
+    {% for message in get_flashed_messages() %}
+        <div class='flash'>{{ message }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>

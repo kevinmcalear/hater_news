@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <form action="{{ url_for('predict_artist') }}" method=post class=add-prediction>
+      <br><br>
+      <h3>Your Username Please:</h3>
+      <div>
+        <br><br>
+        <input type='text' name='username'>
+        <input type='submit' value='Show Me The Hate'>
+        <br><br>
+      </div>
+    </form>
+
+{% endblock %}

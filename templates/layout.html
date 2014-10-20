@@ -7,6 +7,7 @@
     <title>Hater News. | Haterz gon' hate, but now you know who the haterz are.</title>
     <meta name="author" content="Kevin McAlear" />
     <link rel="shortcut icon" href="">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8" async defer></script>
     <script type="text/javascript" src="{{ url_for('static', filename='classie.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='snap.svg-min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='svgLoader.js') }}"></script>
@@ -44,36 +45,55 @@
           currentPage = 0,
           triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'input.pageload-link' ) ),
           loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 300 } );
+          snarkyComments = [
+            "Hopefully you're an internet saint.",
+            "Man, you have a lot of comments...",
+            "Ok, hopefully we are wrapping up.",
+            "Still crunching numbers... I know this takes a while."
+          ];
 
         function init() {
           triggerLoading.forEach( function( trigger ) {
             trigger.addEventListener( 'click', function( ev ) {
               ev.preventDefault();
               loader.show();
+              page = $('div.page');
+              setTimeout( function() { page.empty() }, 1000 );
               // after some time hide loader
               setTimeout( function() {
                 message = document.getElementById( 'load-message' );
                 message.textContent = "Hopefully you're an internet saint."
-              }, 3000 );
-
-              setTimeout( function() {
-                message = document.getElementById( 'load-message' );
-                message.textContent = "Man, you have a lot of comments..."
               }, 6000 );
 
               setTimeout( function() {
                 message = document.getElementById( 'load-message' );
-                message.textContent = "Ok, hopefully we are wrapping up."
+                message.textContent = "Man, you have a lot of comments..."
+              }, 12000 );
 
+              setTimeout( function() {
+                message = document.getElementById( 'load-message' );
+                message.textContent = "Still crunching numbers... I know this takes a while."
+              }, 18000 );
 
-                loader.hide();
+              username = $( ":text" ).val()
+              $.post( "/hater-score", { username: username }, function( data ) {
+                console.log( "Data Loaded: " + data );
 
-                classie.removeClass( pages[ currentPage ], 'show' );
-                // update..
-                // currentPage = currentPage ? 0 : 1;
-                classie.addClass( pages[ currentPage ], 'show' );
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Ok, hopefully we are wrapping up."
+                  // $(document).empty();
+                  page.append(data);
+                  // message.empty();
+                  loader.hide();
 
-              }, 10000 );
+                  classie.removeClass( pages[ currentPage ], 'show' );
+                  // update..
+                  // currentPage = currentPage ? 0 : 1;
+                  classie.addClass( pages[ currentPage ], 'show' );
+                  // history.pushState(null, null, username+"-hater-score");
+                }, 1000 );
+              });
             } );
           } );
         }

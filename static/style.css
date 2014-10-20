@@ -482,7 +482,7 @@ meter::-webkit-meter-optimum-value {
   transition: width .5s;
   box-shadow: 0 5px 5px -5px #999 inset;
   background-color: blue;
-  /*background-image: linear-gradient( 90deg,
+  background-image: linear-gradient( 90deg,
                                      #8bcf69 5%,
                                      #e6d450 5%,
                                      #e6d450 15%,
@@ -491,14 +491,14 @@ meter::-webkit-meter-optimum-value {
                                      #cf82bf 55%,
                                      #cf82bf 95%,
                                      #719fd1 95%,
-                                     #719fd1 100%);*/
+                                     #719fd1 100%);
 
   background-size: 100% 100%;
 }
 
 meter::-webkit-meter-optimum-value:hover {
   background-color: blue;
-  /*background-image: linear-gradient( 90deg,
+  background-image: linear-gradient( 90deg,
                                      #8bcf69 20%,
                                      #e6d450 20%,
                                      #e6d450 40%,
@@ -507,7 +507,7 @@ meter::-webkit-meter-optimum-value:hover {
                                      #cf82bf 60%,
                                      #cf82bf 80%,
                                      #719fd1 80%,
-                                     #719fd1 100%);*/
+                                     #719fd1 100%);
 
   transition: width .5s;
   width: 100% !important; /* !important keyword used to override the inline style in ebkit browsers. */
@@ -517,7 +517,7 @@ meter::-moz-meter-bar {
 
   box-shadow: 0 5px 5px -5px #999 inset;
   background-color: blue;
-  /*background-image: linear-gradient( 90deg,
+  background-image: linear-gradient( 90deg,
                                      #8bcf69 5%,
                                      #e6d450 5%,
                                      #e6d450 15%,
@@ -526,7 +526,7 @@ meter::-moz-meter-bar {
                                      #cf82bf 55%,
                                      #cf82bf 95%,
                                      #719fd1 95%,
-                                     #719fd1 100%);*/
+                                     #719fd1 100%);
 
   background-size: 100% 100%;
 }
@@ -564,7 +564,7 @@ p {
   left: 0;
   border-radius: 2px;
   background-color: blue;
-  /*background-image: linear-gradient( 90deg,
+  background-image: linear-gradient( 90deg,
                                      #8bcf69 20%,
                                      #e6d450 20%,
                                      #e6d450 40%,
@@ -574,7 +574,7 @@ p {
                                      #cf82bf 80%,
                                      #719fd1 80%,
                                      #719fd1 100%);
-*/
+
 }
 
 .swatch__elem {
@@ -617,7 +617,7 @@ p {
   box-shadow: 0 5px 5px -5px #999 inset;
 
   background-color: blue;
-  /*background-image: linear-gradient( 90deg,
+  background-image: linear-gradient( 90deg,
                                      #8bcf69 5%,
                                      #e6d450 5%,
                                      #e6d450 15%,
@@ -626,10 +626,23 @@ p {
                                      #cf82bf 55%,
                                      #cf82bf 95%,
                                      #719fd1 95%,
-                                     #719fd1 100%);*/
+                                     #719fd1 100%);
 
   background-size: 100% 100%;
 
   display: block;
   text-indent: -9999px;
+}
+
+.grid {
+  /*color: pink;*/
+}
+
+.grid-item {
+  background: rgba(255, 89, 89, 0.29);
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.29);
 }

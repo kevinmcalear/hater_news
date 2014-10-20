@@ -1,6 +1,6 @@
-{% extends "layout.html" %}
-{% block body %}
-<h3>{{ d.username }}'s Hater Score:<h3>
+<!-- {% extends "layout.html" %}
+{% block body %} -->
+<h3><a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank">{{ d.username }}'s</a> Hater Score:<h3>
 <h1 style="color:rgb(73, 73, 73);">{{ d.score | round(2, 'floor')}}%</h1>
 
 
@@ -11,12 +11,12 @@
 </meter>
 
 <h3>comments</h3>
-<ul>
+<ul class="grid">
 {% for c in d.comments %}
-  <li>{{c}}</li>
-  <hr>
+  <a href="https://news.ycombinator.com/item?id={{c[1]}}" target="_blank"><li class="grid-item">{{c[0]}}</li></a>
+  <!-- <hr> -->
 {% endfor %}
 </ul>
 
 
-{% endblock %}
+<!-- {% endblock %} -->

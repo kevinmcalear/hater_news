@@ -29,12 +29,12 @@ def get_user_comments(username):
     url_end = ".json"
     user = urlopen( url_usr_strt+username+url_end )
     user = json.loads( user.read() )
-    if len(user['submitted']) > 100:
-        for c in user['submitted'][:101]:
+    if len(user['submitted']) > 50:
+        for c in user['submitted'][:51]:
             item = urlopen( url_itm_strt+str(c)+url_end )
             json_item = json.loads( item.read() )
             if 'text' in json_item:
-                comments.append(smart_str(json_item['text']))
+                comments.append([smart_str(json_item['text']), smart_str(json_item['id'])])
     return comments
 
 
@@ -105,7 +105,7 @@ def display_form():
 # TODO bind this view to the route '/predictions'
 # TODO set this view to use HTTP POST only
 @app.route('/hater-score', methods=['POST'])
-def predict_artist():
+def predict_hate():
     # TODO get the lyrics from the body of the POST request
     username = request.form['username']
     comments = get_user_comments(username)

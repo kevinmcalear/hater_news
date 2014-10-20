@@ -8,7 +8,6 @@ Pillow==2.5.1
 PyAudio==0.2.7
 PyYAML==3.11
 Pygments==1.6
-SQLAlchemy==0.9.7
 Sphinx==1.2.3
 Werkzeug==0.9.6
 XlsxWriter==0.5.7
@@ -91,7 +90,6 @@ pyface==4.4.0
 pyfiglet==0.7
 pyflakes==0.8.1
 pyparsing==2.0.1
-pysqlite==2.6.3
 pytest==2.6.3
 python-dateutil==2.2
 pytz==2014.4

@@ -101,7 +101,7 @@ print 'All loaded Captn\'!'
 # TODO inspect the template 'lyrics_form.html'
 @app.route('/')
 def display_form():
-    return render_template('lyrics_form.html')
+    return render_template('hater-form.html')
 # TODO bind this view to the route '/predictions'
 # TODO set this view to use HTTP POST only
 @app.route('/hater-score', methods=['POST'])

@@ -417,3 +417,219 @@ section p {
 /*REMOVING INPUT BLUE SHADOW*/
 
 input {border:0; outline:none;}
+
+
+/*HATER BAR*/
+
+HTML  CSS   Result
+Edit on
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+
+  font-family: "Roboto", "Lucida Grande", "Lucida", sans-serif;
+  margin: 5em auto;
+  background: radial-gradient(#f9f9f9 20%, #ddd 80%);
+  width: 550px;
+}
+
+h1 {
+
+  font-size: 1.5em;
+  margin: 0 auto 2.5em;
+  font-weight: 700;
+}
+
+xmp {
+
+  font-family: Consolas, Monaco, monospace;
+  font-size: 85%;
+  color: #666;
+  font-weight: 400;
+}
+
+meter {
+
+  display: block;
+  margin: 0 auto;
+
+  width: 550px;
+  height: 25px;
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  /* Firefox */
+  background: none; /* Required to get rid of the default background prop. */
+  background-color: whiteSmoke;
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+meter::-webkit-meter-bar {
+
+  background: none; /* Important to get rid of default background. */
+  background-color: whiteSmoke;
+
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+meter::-webkit-meter-optimum-value {
+
+  transition: width .5s;
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background-color: blue;
+  /*background-image: linear-gradient( 90deg,
+                                     #8bcf69 5%,
+                                     #e6d450 5%,
+                                     #e6d450 15%,
+                                     #f28f68 15%,
+                                     #f28f68 55%,
+                                     #cf82bf 55%,
+                                     #cf82bf 95%,
+                                     #719fd1 95%,
+                                     #719fd1 100%);*/
+
+  background-size: 100% 100%;
+}
+
+meter::-webkit-meter-optimum-value:hover {
+  background-color: blue;
+  /*background-image: linear-gradient( 90deg,
+                                     #8bcf69 20%,
+                                     #e6d450 20%,
+                                     #e6d450 40%,
+                                     #f28f68 40%,
+                                     #f28f68 60%,
+                                     #cf82bf 60%,
+                                     #cf82bf 80%,
+                                     #719fd1 80%,
+                                     #719fd1 100%);*/
+
+  transition: width .5s;
+  width: 100% !important; /* !important keyword used to override the inline style in ebkit browsers. */
+}
+
+meter::-moz-meter-bar {
+
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background-color: blue;
+  /*background-image: linear-gradient( 90deg,
+                                     #8bcf69 5%,
+                                     #e6d450 5%,
+                                     #e6d450 15%,
+                                     #f28f68 15%,
+                                     #f28f68 55%,
+                                     #cf82bf 55%,
+                                     #cf82bf 95%,
+                                     #719fd1 95%,
+                                     #719fd1 100%);*/
+
+  background-size: 100% 100%;
+}
+
+p {
+
+  margin: 0 auto ;
+  width: 550px;
+  line-height: 2.5;
+}
+
+.free-space {
+
+  float: right;
+}
+
+.swatch {
+
+  margin: 0; padding:0;
+  margin: 5em auto;
+  list-style-type: none;
+  width: 550px;
+  display: block;
+  position: relative;
+}
+
+.swatch::before {
+
+  content: '';
+  width: 100%;
+  height: 10px;
+  outline: 0px solid #000;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  border-radius: 2px;
+  background-color: blue;
+  /*background-image: linear-gradient( 90deg,
+                                     #8bcf69 20%,
+                                     #e6d450 20%,
+                                     #e6d450 40%,
+                                     #f28f68 40%,
+                                     #f28f68 60%,
+                                     #cf82bf 60%,
+                                     #cf82bf 80%,
+                                     #719fd1 80%,
+                                     #719fd1 100%);
+*/
+}
+
+.swatch__elem {
+
+  outline: 0px solid #c00;
+  float: left;
+  width: 110px;
+  padding-left: 5px;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.used-space {
+
+  display: block;
+  line-height: 2;
+  font-size: 85%;
+  color: #666;
+}
+
+.meter-gauge {
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    background-color: whiteSmoke;
+    box-shadow: 0 5px 5px -5px #333 inset;
+
+    width: 550px;
+    height: 25px;
+
+    display: block;
+}
+
+.meter-gauge > span {
+
+  height: inherit;
+  box-shadow: 0 5px 5px -5px #999 inset;
+
+  background-color: blue;
+  /*background-image: linear-gradient( 90deg,
+                                     #8bcf69 5%,
+                                     #e6d450 5%,
+                                     #e6d450 15%,
+                                     #f28f68 15%,
+                                     #f28f68 55%,
+                                     #cf82bf 55%,
+                                     #cf82bf 95%,
+                                     #719fd1 95%,
+                                     #719fd1 100%);*/
+
+  background-size: 100% 100%;
+
+  display: block;
+  text-indent: -9999px;
+}

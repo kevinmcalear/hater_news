@@ -2,6 +2,14 @@
 {% block body %}
 <h3>{{ d.username }}'s Hater Score:<h3>
 <h1 style="color:rgb(73, 73, 73);">{{ d.score | round(2, 'floor')}}%</h1>
+
+
+<meter value="{{ d.score }}" min="0" max="100" title="Hater Score">
+  <div class="meter-gauge">
+    <span style="width: 46.42%;">Disk Usage - 55.93GB out of 120GB</span>
+  </div>
+</meter>
+
 <h3>comments</h3>
 <ul>
 {% for c in d.comments %}

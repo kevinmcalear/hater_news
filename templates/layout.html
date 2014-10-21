@@ -11,20 +11,33 @@
     <script type="text/javascript" src="{{ url_for('static', filename='classie.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='snap.svg-min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='svgLoader.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='sweet-alert.js') }}"></script>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
+  <a href="https://github.com/kevinmcalear/hater_news" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
     <div id="pagewrap" class="pagewrap">
       <div class="container show">
-        <header class="codrops-header">
-          <h1>Hater News <span>Haterz gon' hate. But now you know who the haterz are.</span></h1>
-        </header>
+        <header class="header">
+          <a href="/"><h1 class="logo">Hater News<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon' hate. But now you know who the haterz are.</p></h1></a>
+
+        </header><!-- /header -->
         <section class="columns clearfix">
           <div class='page'>
               {% for message in get_flashed_messages() %}
               <div class='flash'>{{ message }}</div>
               {% endfor %}
               {% block body %}{% endblock %}
+              <div class="columns" style="margin: 50px;">
+                <div class="column" style="background:white;">
+                  <h3>What</h3>
+                  <p style="color:grey;font-size: 15px;">Hater News is a project made by <a href="http://twitter.com/kevinmcalear" target="_blank">Kevin McAlear</a>. </p>
+                </div>
+                <div class="column" style="background:white;">
+                  <h3>How</h3>
+                  <p style="color:grey;font-size: 15px;">You give the program a user name from <a>Hacker News</a>. It then finds the 50 most recent comments that user has made and runs the probability of that comment being insulting using a SciKit Learn's Count Vecteriztor, some additional hand-rolled features, and Logisitc Regression. If you want to learn more, feel free to check out the iPython Notbook for a detailed explination.</p>
+                </div>
+              </div>
           </div>
         </section>
       </div>
@@ -33,13 +46,23 @@
 
     <div id="loader" class="pageload-overlay" data-opening="M20,15 50,30 50,30 30,30 Z;M0,0 80,0 50,30 20,45 Z;M0,0 80,0 60,45 0,60 Z;M0,0 80,0 80,60 0,60 Z" data-closing="M0,0 80,0 60,45 0,60 Z;M0,0 80,0 50,30 20,45 Z;M20,15 50,30 50,30 30,30 Z;M30,30 50,30 50,30 30,30 Z">
     <div style="z-index:999;color:#BABABA;;position:relative;text-align:center;margin:30%;">
-      <h1 id="load-message">Trolling For Your Troll Level...</h1>
+       <h1 id="load-message">Trolling For Your Troll Level...</h1>
       </div>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
       <path d="M30,30 50,30 50,30 30,30 Z"/>
     </svg>
     <script>
       (function() {
+
+        // // Form Validation
+        // function validateForm() {
+        //     var x = document.forms["myForm"]["fname"].value;
+        //     if (x==null || x=="") {
+        //         alert("First name must be filled out");
+        //         return false;
+        //     }
+        // }
+
         var pageWrap = document.getElementById( 'pagewrap' ),
           pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
           currentPage = 0,
@@ -49,51 +72,57 @@
             "Hopefully you're an internet saint.",
             "Man, you have a lot of comments...",
             "Ok, hopefully we are wrapping up.",
-            "Still crunching numbers... I know this takes a while."
+            "Still crunching numbers... I know this takes a while.",
+            "Haterz gon' hate. But now you know who the haterz are.",
           ];
 
         function init() {
           triggerLoading.forEach( function( trigger ) {
             trigger.addEventListener( 'click', function( ev ) {
               ev.preventDefault();
-              loader.show();
-              page = $('div.page');
-              setTimeout( function() { page.empty() }, 1000 );
-              // after some time hide loader
-              setTimeout( function() {
-                message = document.getElementById( 'load-message' );
-                message.textContent = "Hopefully you're an internet saint."
-              }, 6000 );
 
-              setTimeout( function() {
-                message = document.getElementById( 'load-message' );
-                message.textContent = "Man, you have a lot of comments..."
-              }, 12000 );
-
-              setTimeout( function() {
-                message = document.getElementById( 'load-message' );
-                message.textContent = "Still crunching numbers... I know this takes a while."
-              }, 18000 );
-
-              username = $( ":text" ).val()
-              $.post( "/hater-score", { username: username }, function( data ) {
-                console.log( "Data Loaded: " + data );
+              if ( $('input:text').val().trim() != "" ) {
+                loader.show();
+                page = $('div.page');
+                setTimeout( function() { page.empty() }, 500 );
+                // after some time hide loader
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Hopefully you're an internet saint."
+                }, 6000 );
 
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
-                  message.textContent = "Ok, hopefully we are wrapping up."
-                  // $(document).empty();
-                  page.append(data);
-                  // message.empty();
-                  loader.hide();
+                  message.textContent = "Man, you have a lot of comments..."
+                }, 12000 );
 
-                  classie.removeClass( pages[ currentPage ], 'show' );
-                  // update..
-                  // currentPage = currentPage ? 0 : 1;
-                  classie.addClass( pages[ currentPage ], 'show' );
-                  // history.pushState(null, null, username+"-hater-score");
-                }, 1000 );
-              });
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Still crunching numbers... I know this takes a while."
+                }, 18000 );
+
+                username = $( ":text" ).val()
+                $.post( "/hater-score", { username: username }, function( data ) {
+                  console.log( "Data Loaded: " + data );
+
+                  setTimeout( function() {
+                    message = document.getElementById( 'load-message' );
+                    message.textContent = "Ok, hopefully we are wrapping up."
+                    // $(document).empty();
+                    page.append(data);
+                    // message.empty();
+                    loader.hide();
+
+                    classie.removeClass( pages[ currentPage ], 'show' );
+                    // update..
+                    // currentPage = currentPage ? 0 : 1;
+                    classie.addClass( pages[ currentPage ], 'show' );
+                    // history.pushState(null, null, username+"-hater-score");
+                  }, 1000 );
+                });
+              } else {
+                sweetAlert("Sorry", "You have to put in a username from Hacker News.", "error")
+              }
             } );
           } );
         }

@@ -23,6 +23,7 @@ import numpy as np
 # Get all of a user's comments
 def get_user_comments(username):
     comments = []
+    ids = []
 
     url_usr_strt = "https://hacker-news.firebaseio.com/v0/user/"
     url_itm_strt = "https://hacker-news.firebaseio.com/v0/item/"
@@ -34,9 +35,11 @@ def get_user_comments(username):
             item = urlopen( url_itm_strt+str(c)+url_end )
             json_item = json.loads( item.read() )
             if 'text' in json_item:
-                comments.append([smart_str(json_item['text']), smart_str(json_item['id'])])
-    return comments
-
+                print smart_str(json_item['id'])
+                ids.append(smart_str(json_item['id']))
+                print smart_str(json_item['text'])
+                comments.append(smart_str(json_item['text']))
+    return { 'c':comments, 'id':ids }
 
 # Get a final Hater Score. 100 is the worst, 0 is the best.
 def calculate_score(predictions):
@@ -48,7 +51,7 @@ def calculate_score(predictions):
 
 # Get all a users comments and run them through my model
 def user_score(username, my_vect, clf):
-    comments = filter(None, get_user_comments(username))
+    comments = filter(None, get_user_comments(username)['c'])
     badwords = set(pd.read_csv('data/my_badwords.csv').words)
     badwords_count = []
 
@@ -84,7 +87,7 @@ def user_score(username, my_vect, clf):
     features = np.hstack((features, re_spaces))
     predictions = clf.predict_proba(features)
 
-    return calculate_score(predictions)
+    return predictions
 
 
 
@@ -108,14 +111,19 @@ def display_form():
 def predict_hate():
     # TODO get the lyrics from the body of the POST request
     username = request.form['username']
-    comments = get_user_comments(username)
-    score = user_score(username, vect, clf)
+    comments = []
+    text = get_user_comments(username)['c']
+    predictions = user_score(username, vect, clf)
+    ids = get_user_comments(username)['id']
+
+    for i, v in enumerate(text):
+        comments.append({'score': predictions[i-1][1]+.05, 'id': ids[i-1], 'comment': v})
 
     print 'predicting hater score for %s' % username
     d = {
         'username': username,
         'comments': comments,
-        'score': score
+        'score': calculate_score(predictions)
     }
     return render_template('hater-score.html', d=d)
 

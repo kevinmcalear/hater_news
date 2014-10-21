@@ -1,19 +1,26 @@
 
-<h3><a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank">{{ d.username }}'s</a> Hater Score:<h3>
-<h1 style="color:rgb(73, 73, 73);">{{ d.score | round(2, 'floor')}}%</h1>
+<h3 style="color: rgba(0, 0, 0, 0.67);"><a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank">{{ d.username }}'s</a> Hater Score:<h3>
+<h1 style="font-size: 50px;margin-bottom: 20px;">{{ d.score | round(2, 'floor')}}%<span style="color:rgba(0, 0, 0, 0.25);font-size:20px;display:block;font-weight:100;">Of The Time Spent Hating.</span></h1>
+<div style="
+    width: 200px;
+    height: 2px;
+    background: white;
+    margin: 0 auto;
+    margin-bottom: 40px;
+            "><div style="
+    width: {{ d.score | round(2, 'floor')}}%;
+    background: rgba(255, 0, 0, 0.45);
+    height: 2px;
+"></div></div>
+<img class="sticker-img" style="opacity:{{ d.lover_level }};" src='https://transfer.sh/HiLk7/mr-rogers.jpg'>&nbsp;&nbsp;
+<img class="sticker-img" style="opacity:{{ d.hater_level }};" src='https://transfer.sh/U81k4/douchebag.jpg'>
 
 
-<meter value="{{ d.score }}" min="0" max="100" title="Hater Score">
-  <div class="meter-gauge">
-    <span style="width: 46.42%;">Disk Usage - 55.93GB out of 120GB</span>
-  </div>
-</meter>
-
-<h3>Periodic Table Of Insults</h3>
-<p  style="color:grey;font-size: 15px;">The darker red the box, the more insulting the comment.</p>
+<h3 style="font-size: 35px;">Periodic Table Of Insults</h3>
+<p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in Hacker News.</p>
 <ul class="grid">
 {% for c in d.comments %}
-  <a href="https://news.ycombinator.com/item?id={{ c.id }}" target="_blank"><li class="grid-item" style="background:rgba(255, 89, 89, {{ c.score }})">{{ c.comment[0:2] }}</li></a>
+  <a href="https://news.ycombinator.com/item?id={{ c.id }}" target="_blank"><li class="grid-item" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
 
 {% endfor %}
 </ul>

@@ -54,15 +54,6 @@
     <script>
       (function() {
 
-        // // Form Validation
-        // function validateForm() {
-        //     var x = document.forms["myForm"]["fname"].value;
-        //     if (x==null || x=="") {
-        //         alert("First name must be filled out");
-        //         return false;
-        //     }
-        // }
-
         var pageWrap = document.getElementById( 'pagewrap' ),
           pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
           currentPage = 0,
@@ -121,7 +112,7 @@
                   }, 1000 );
                 });
               } else {
-                sweetAlert("Sorry", "You have to put in a username from Hacker News.", "error")
+                sweetAlert("Sorry Buddy.", "You have to put in a username from Hacker News.", "error")
               }
             } );
           } );

@@ -115,15 +115,28 @@ def predict_hate():
     text = get_user_comments(username)['c']
     predictions = user_score(username, vect, clf)
     ids = get_user_comments(username)['id']
+    colors = []
+
+    for p in predictions:
+        # if p[1] > .2:
+            # colors.append( "rgba(89, 255, 160, "+str(p[0]+.01)+")" )
+        # else:
+        colors.append( "rgba(255, 89, 89, "+str(p[1]+.01)+")" )
+
 
     for i, v in enumerate(text):
-        comments.append({'score': predictions[i-1][1]+.05, 'id': ids[i-1], 'comment': v})
+        comments.append({'score': predictions[i-1][1]+.05, 'id': ids[i-1], 'comment': v, 'color': colors[i-1] })
+
+
+    hater_level = [(calculate_score(predictions)/100), (1-(calculate_score(predictions)/100))]
 
     print 'predicting hater score for %s' % username
     d = {
         'username': username,
         'comments': comments,
-        'score': calculate_score(predictions)
+        'score': calculate_score(predictions),
+        'hater_level': hater_level[0],
+        'lover_level': hater_level[1]
     }
     return render_template('hater-score.html', d=d)
 

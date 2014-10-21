@@ -39,6 +39,15 @@ def get_user_comments(username):
                 ids.append(smart_str(json_item['id']))
                 print smart_str(json_item['text'])
                 comments.append(smart_str(json_item['text']))
+    else:
+        for c in user['submitted']:
+            item = urlopen( url_itm_strt+str(c)+url_end )
+            json_item = json.loads( item.read() )
+            if 'text' in json_item:
+                print smart_str(json_item['id'])
+                ids.append(smart_str(json_item['id']))
+                print smart_str(json_item['text'])
+                comments.append(smart_str(json_item['text']))
     return { 'c':comments, 'id':ids }
 
 # Get a final Hater Score. 100 is the worst, 0 is the best.
@@ -112,7 +121,7 @@ def predict_hate():
     # TODO get the lyrics from the body of the POST request
     username = request.form['username']
     comments = []
-    text = get_user_comments(username)['c']
+    text = filter(None, get_user_comments(username)['c'])
     predictions = user_score(username, vect, clf)
     ids = get_user_comments(username)['id']
     colors = []

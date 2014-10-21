@@ -15,15 +15,19 @@ from sklearn.externals import joblib
 # Importing my standard stuff
 import pandas as pd
 import numpy as np
+# For troubleshooting
+# Use This: code.interact(local=locals())
+import code
 
 
 
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
 
 # Get all of a user's comments
-def get_user_comments(username):
+def get_user_comments(username, reverse=False):
     comments = []
     ids = []
+    reverse = reverse
 
     url_usr_strt = "https://hacker-news.firebaseio.com/v0/user/"
     url_itm_strt = "https://hacker-news.firebaseio.com/v0/item/"
@@ -48,6 +52,10 @@ def get_user_comments(username):
                 ids.append(smart_str(json_item['id']))
                 print smart_str(json_item['text'])
                 comments.append(smart_str(json_item['text']))
+    if reverse == True:
+        comments.reverse()
+        print "***************REVERSE DAT*************"
+
     return { 'c':comments, 'id':ids }
 
 # Get a final Hater Score. 100 is the worst, 0 is the best.
@@ -121,7 +129,10 @@ def predict_hate():
     # TODO get the lyrics from the body of the POST request
     username = request.form['username']
     comments = []
-    text = filter(None, get_user_comments(username)['c'])
+    print request
+    reverse = request.form['reverse']
+    # code.interact(local=locals())
+    text = filter(None, get_user_comments(username, reverse=reverse)['c'])
     predictions = user_score(username, vect, clf)
     ids = get_user_comments(username)['id']
     colors = []

@@ -91,9 +91,12 @@
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Still crunching numbers... I know this takes a while."
                 }, 18000 );
-
+                reverse = false;
                 username = $( ":text" ).val()
-                $.post( "/hater-score", { username: username }, function( data ) {
+                $("input[name='reverse']").on('change', function(){
+                  reverse = $("input[name='reverse']:checked").length == 1;
+                });
+                $.post( "/hater-score", { username: username, reverse: reverse }, function( data ) {
                   console.log( "Data Loaded: " + data );
 
                   setTimeout( function() {

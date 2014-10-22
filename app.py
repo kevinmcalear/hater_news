@@ -20,7 +20,6 @@ import numpy as np
 import code
 
 
-
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
 
 # Get all of a user's comments
@@ -108,8 +107,12 @@ def user_score(username, my_vect, clf):
 
 
 
-
+# Setting up app
 app = Flask(__name__)
+
+# App config settings
+import os
+app.config.from_object(os.environ['APP_SETTINGS'])
 
 
 print 'Loading clf & vect...'

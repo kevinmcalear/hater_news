@@ -4,3 +4,5 @@
 insults.csv
 venv
 *.pyc
+logs.txt
+message.txt

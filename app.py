@@ -110,6 +110,11 @@ def user_score(username, my_vect, clf):
 # Setting up app
 app = Flask(__name__)
 
+@failsafe
+def create_app():
+  from routes import app
+  return app
+
 # App config settings
 import os
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -164,5 +169,5 @@ def predict_hate():
     return render_template('hater-score.html', d=d)
 
 if __name__ == '__main__':
-    app.debug = True
+    # app.debug = True
     app.run()

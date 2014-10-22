@@ -1,9 +1,15 @@
-numpy==1.9.0
-Flask==0.10.1
-Jinja2==2.7.3
-scikit-learn==0.15.1
-scipy==0.14.0
-ujson==1.33
-Django==1.7
-pycurl==7.19.5
+# numpy==1.9.0
+# Flask==0.10.1
+# Jinja2==2.7.3
+# scikit-learn==0.15.1
+# scipy==0.14.0
+# ujson==1.33
+# Django==1.7
+# pycurl==7.19.5
 
+# This requirements file lists all dependecies for this project.
+# Run 'pip install -r requirements.txt' to install dependencies
+bottle
+numpy==1.7.0
+textblob==0.8.3
+pandas==0.13.0

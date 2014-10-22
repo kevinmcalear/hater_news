@@ -6,7 +6,7 @@
 # This requirements file lists all dependecies for this project.
 # Run 'pip install -r requirements.txt' to install dependencies
 bottle
-numpy==1.7.0
+# numpy==1.7.0
 textblob==0.8.3
 pandas==0.13.0
 Flask==0.10.1
@@ -15,7 +15,9 @@ scikit-learn==0.15.1
 gunicorn==19.1.1
 Werkzeug==0.8.2
 wsgiref==0.1.2
-scipy
+# scipy
+numpy==1.8.1
+scipy==0.14.0
 
 Django==1.6.5
 # dj-database-url==0.3.0

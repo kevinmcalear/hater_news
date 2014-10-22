@@ -34,8 +34,8 @@ def get_user_comments(username, reverse=False):
     url_end = ".json"
     user = urlopen( url_usr_strt+username+url_end )
     user = json.loads( user.read() )
-    if len(user['submitted']) > 50:
-        for c in user['submitted'][:51]:
+    if len(user['submitted']) > 45:
+        for c in user['submitted'][:46]:
             item = urlopen( url_itm_strt+str(c)+url_end )
             json_item = json.loads( item.read() )
             if 'text' in json_item:

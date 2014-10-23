@@ -46,7 +46,7 @@
 
     <div id="loader" class="pageload-overlay" data-opening="M20,15 50,30 50,30 30,30 Z;M0,0 80,0 50,30 20,45 Z;M0,0 80,0 60,45 0,60 Z;M0,0 80,0 80,60 0,60 Z" data-closing="M0,0 80,0 60,45 0,60 Z;M0,0 80,0 50,30 20,45 Z;M20,15 50,30 50,30 30,30 Z;M30,30 50,30 50,30 30,30 Z">
     <div style="z-index:999;color:#BABABA;;position:relative;text-align:center;margin:30%;">
-       <h1 id="load-message">Trolling For Your Troll Level...</h1>
+       <h1 id="load-message" class="hide">Trolling For Your Troll Level...</h1>
       </div>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
       <path d="M30,30 50,30 50,30 30,30 Z"/>
@@ -73,7 +73,14 @@
               ev.preventDefault();
 
               if ( $('input:text').val().trim() != "" ) {
+
+
                 loader.show();
+
+
+                 setTimeout( function() {
+                   $( '#load-message' ).removeClass('hide');
+                 }, 500 );
                 page = $('div.page');
                 setTimeout( function() { page.empty() }, 500 );
                 // after some time hide loader
@@ -91,6 +98,22 @@
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Still crunching numbers... I know this takes a while."
                 }, 18000 );
+
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Still crunching numbers... I know this takes a while."
+                }, 18000 );
+
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Still crunching numbers... I know this takes a while."
+                }, 18000 );
+
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Still crunching numbers... I know this takes a while."
+                }, 18000 );
+
                 reverse = false;
                 username = $( ":text" ).val()
                 $("input[name='reverse']").on('change', function(){
@@ -106,7 +129,7 @@
                     page.append(data);
                     // message.empty();
                     loader.hide();
-
+                    $( '#load-message' ).addClass('hide');
                     classie.removeClass( pages[ currentPage ], 'show' );
                     // update..
                     // currentPage = currentPage ? 0 : 1;

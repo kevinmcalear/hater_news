@@ -382,7 +382,9 @@ h1.logo {
 
 
 
-
+.hide {
+  display: none;
+}
 
 
 
@@ -991,3 +993,5 @@ h1.logo {
   -webkit-animation: pulseWarningIns 0.75s infinite alternate;
   -moz-animation: pulseWarningIns 0.75s infinite alternate;
   animation: pulseWarningIns 0.75s infinite alternate; }
+
+

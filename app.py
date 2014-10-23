@@ -64,8 +64,8 @@ def calculate_score(predictions):
     return np.mean(total_score) * 100
 
 # Get all a users comments and run them through my model
-def user_score(username, my_vect, clf):
-    comments = filter(None, get_user_comments(username)['c'])
+def user_score(comments, my_vect, clf):
+    comments = filter(None, comments['c'])
     badwords = set(pd.read_csv('data/my_badwords.csv').words)
     badwords_count = []
 
@@ -127,9 +127,10 @@ def predict_hate():
     comments = []
     print request
     reverse = request.form['reverse']
-    text = filter(None, get_user_comments(username, reverse=reverse)['c'])
-    predictions = user_score(username, vect, clf)
-    ids = get_user_comments(username)['id']
+    temp = get_user_comments(username, reverse=reverse)
+    text = filter(None, temp['c'])
+    predictions = user_score(temp, vect, clf)
+    ids = temp['id']
     colors = []
 
     for p in predictions:

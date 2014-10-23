@@ -1,6 +1,4 @@
-# TODO Now it's your turn. Build an app around one of the previous labs or one of your projects.
-# TODO now let's add a form that we can used to submit lyrics.
-# TODO import request from flask
+# Getting the guts of our app
 from flask import Flask, render_template, request
 # Setting up a connection to the internetz
 from urllib2 import urlopen
@@ -110,36 +108,25 @@ def user_score(username, my_vect, clf):
 # Setting up app
 app = Flask(__name__)
 
-# @failsafe
-# def create_app():
-#   from routes import app
-#   return app
-
-# App config settings
-# import os
-# app.config.from_object(os.environ['APP_SETTINGS'])
-
 
 print 'Loading clf & vect...'
 vect = joblib.load('vect.pkl')
 clf = joblib.load('clf.pkl')
 print 'All loaded Captn\'!'
 
-# TODO add a view for the route '/' that renders the template 'lyrics_form.html'
-# TODO inspect the template 'lyrics_form.html'
+# Setting up our base route
 @app.route('/')
 def display_form():
     return render_template('hater-form.html')
-# TODO bind this view to the route '/predictions'
-# TODO set this view to use HTTP POST only
+
+# Setting up a way to get our form data
 @app.route('/hater-score', methods=['POST'])
 def predict_hate():
-    # TODO get the lyrics from the body of the POST request
+    # Saving our data from the form so we can use it.
     username = request.form['username']
     comments = []
     print request
     reverse = request.form['reverse']
-    # code.interact(local=locals())
     text = filter(None, get_user_comments(username, reverse=reverse)['c'])
     predictions = user_score(username, vect, clf)
     ids = get_user_comments(username)['id']

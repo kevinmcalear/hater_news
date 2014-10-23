@@ -107,7 +107,9 @@
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Maybe you should stop hatin'."
-                  $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/8dxvoPhErPo?autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                  if(!sent) {
+                    $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/8dxvoPhErPo?autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                  }
                 }, 12000 );
 
                 setTimeout( function() {
@@ -128,7 +130,9 @@
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Still crunching numbers... I know this takes a while."
-                   $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/BfpV2e9PAE4?t=0m40s&autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                  if(!sent) {
+                    $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/BfpV2e9PAE4?t=0m40s&autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                  }
                 }, 36000 );
 
                 setTimeout( function() {
@@ -138,16 +142,19 @@
 
                 setTimeout( function() {
                   loader.hide();
-                  setTimeout( function() {
-                    location.reload();
-                  }, 600 );
+                  message.textContent = "Trolling For Your Troll Level..."
+                  if(!sent) {
+                    setTimeout( function() {
+                      location.reload();
+                    }, 600 );
+                  }
                 }, 123000 );
 
-
+                sent = false;
                 username = $( ":text" ).val()
 
                 $.post( "/hater-score", { username: username, reverse: reverse }, function( data ) {
-
+                    sent = true;
                     message = document.getElementById( 'load-message' );
                     message.textContent = "Ok, hopefully we are wrapping up."
 

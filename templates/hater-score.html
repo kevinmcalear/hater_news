@@ -1,6 +1,6 @@
 
 <h3 style="color: rgba(0, 0, 0, 0.67);"><a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);">{{ d.username }}'s</a> Hater Score:<h3>
-<h1 style="font-size: 50px;margin-bottom: 20px;">{{ d.score | round(2, 'floor')}}%<span style="color:rgba(0, 0, 0, 0.25);font-size:20px;display:block;font-weight:100;">Of The Time Spent Hating.</span></h1>
+<h1 style="font-size: 50px;margin-bottom: 20px;">{{ d.score | round(2, 'ceil')}}%<span style="color:rgba(0, 0, 0, 0.25);font-size:20px;display:block;font-weight:100;">Of The Time Spent Hating.</span></h1>
 <div style="
     width: 200px;
     height: 2px;
@@ -25,5 +25,11 @@
 
 {% endfor %}
 </ul>
-
-
+<br>
+<br>
+The Worst Comment
+<br><!-- <span style="color:grey;font-size: 12px;margin-bottom:2px;">( {{ d.worst_comment.score | round(2, 'ceil') }} hate filled )</span>  -->
+<br>
+<span style="display:inline-block;height:10px;width:10px;background:{{ d.worst_comment.color }};"></span> <a href="https://news.ycombinator.com/item?id={{ d.worst_comment.id }}" target="_blank">"{{ d.worst_comment.comment | truncate(300) }}"</a>
+<br>
+<a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);">-{{ d.username }}</a>

@@ -141,9 +141,9 @@ def predict_hate():
 
 
     for i, v in enumerate(text):
-        comments.append({'score': predictions[i-1][1]+.05, 'id': ids[i-1], 'comment': v, 'color': colors[i-1] })
+        comments.append({'score': predictions[i-1][1]+.05, 'id': ids[i-1], 'comment': text[i-1], 'color': colors[i-1] })
 
-
+    worst_comment = sorted(comments, key=lambda k: k['score'])
     hater_level = [(calculate_score(predictions)/100), (1-(calculate_score(predictions)/100))]
 
     print 'predicting hater score for %s' % username
@@ -152,7 +152,8 @@ def predict_hate():
         'comments': comments,
         'score': calculate_score(predictions),
         'hater_level': hater_level[0],
-        'lover_level': hater_level[1]
+        'lover_level': hater_level[1],
+        'worst_comment': worst_comment[-1]
     }
     return render_template('hater-score.html', d=d)
 

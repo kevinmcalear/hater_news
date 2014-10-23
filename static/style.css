@@ -386,6 +386,9 @@ h1.logo {
   display: none;
 }
 
+#time-frame {
+  border-bottom: 2px solid grey;
+}
 
 
 

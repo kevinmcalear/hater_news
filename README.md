@@ -13,7 +13,7 @@ How It's Built.
 ---------
 Feel free to look under the hood.
 
-[The Classifier Data I'm Using.](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data)
+[The Training Data I'm Using.](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data)
 
 [Hacker News API I'm Using.](https://github.com/HackerNews/API)
 

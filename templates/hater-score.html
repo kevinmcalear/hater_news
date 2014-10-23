@@ -12,9 +12,9 @@
     background: rgba(255, 0, 0, 0.45);
     height: 2px;
 "></div></div>
-<img class="sticker-img" style="opacity:{{ d.lover_level }};" src='https://transfer.sh/HiLk7/mr-rogers.jpg'>
+<img class="sticker-img" style="opacity:{{ d.lover_level }};" src="{{ url_for('static', filename='mr-rogers.jpg') }}">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img class="sticker-img" style="opacity:{{ d.hater_level }};" src='https://transfer.sh/U81k4/douchebag.jpg'>
+<img class="sticker-img" style="opacity:{{ d.hater_level }};" src="{{ url_for('static', filename='douchebag.jpg') }}">
 
 
 <h3 style="font-size: 35px;">Periodic Table Of Insults</h3>

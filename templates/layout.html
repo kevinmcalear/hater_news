@@ -35,7 +35,7 @@
                 </div>
                 <div class="column" style="background:white;">
                   <h3>How</h3>
-                  <p style="color:grey;font-size: 15px;">You give the program a user name from <a>Hacker News</a>. It then finds the 50 most recent comments that user has made and runs the probability of that comment being insulting using a SciKit Learn's Count Vecteriztor, some additional hand-rolled features, and Logisitc Regression. If you want to learn more, feel free to check out the iPython Notbook for a detailed explination.</p>
+                  <p style="color:grey;font-size: 15px;">You give the program a user name from <a>Hacker News</a>. It then finds the 50 <span id="time-frame">most recent</span> comments that user has made and runs the probability of that comment being insulting using a SciKit Learn's Count Vecteriztor, some additional hand-rolled features, and Logisitc Regression. If you want to learn more, feel free to check out the iPython Notbook for a detailed explination.</p>
                 </div>
               </div>
           </div>
@@ -66,11 +66,26 @@
             "Still crunching numbers... I know this takes a while.",
             "Haterz gon' hate. But now you know who the haterz are.",
           ];
+          reverse = false;
+
+          setTimeout( function() {
+            $("input[name='reverse']").on('change', function(){
+              reverse = $("input[name='reverse']:checked").length == 1;
+
+              if ( reverse == true ){
+                $('#time-frame').text("oldest");
+              } else {
+                $('#time-frame').text("most recent");
+              };
+            });
+           }, 200 );
 
         function init() {
           triggerLoading.forEach( function( trigger ) {
             trigger.addEventListener( 'click', function( ev ) {
               ev.preventDefault();
+
+
 
               if ( $('input:text').val().trim() != "" ) {
 
@@ -114,11 +129,9 @@
                   message.textContent = "Still crunching numbers... I know this takes a while."
                 }, 18000 );
 
-                reverse = false;
+
                 username = $( ":text" ).val()
-                $("input[name='reverse']").on('change', function(){
-                  reverse = $("input[name='reverse']:checked").length == 1;
-                });
+
                 $.post( "/hater-score", { username: username, reverse: reverse }, function( data ) {
                   console.log( "Data Loaded: " + data );
 
@@ -138,7 +151,7 @@
                   }, 1000 );
                 });
               } else {
-                sweetAlert("Sorry Buddy.", "You have to put in a username from Hacker News.", "error")
+                sweetAlert("Sorry.", "You have to put in a username from Hacker News.", "error")
               }
             } );
           } );

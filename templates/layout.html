@@ -106,41 +106,54 @@
 
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
-                  message.textContent = "Man, you have a lot of comments..."
+                  message.textContent = "Maybe you should stop hatin'."
+                  $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/8dxvoPhErPo?autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
                 }, 12000 );
 
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
-                  message.textContent = "Still crunching numbers... I know this takes a while."
-                }, 18000 );
+                  message.textContent = "I bet your the digital Jersy Shore."
+                }, 18200 );
+
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Or are you more of a Mr. Rogers type?"
+                }, 24000 );
+
+                setTimeout( function() {
+                  message = document.getElementById( 'load-message' );
+                  message.textContent = "Man, you have a lot of comments..."
+                }, 30000 );
 
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Still crunching numbers... I know this takes a while."
-                }, 18000 );
+                   $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/BfpV2e9PAE4?t=0m40s&autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                }, 36000 );
 
                 setTimeout( function() {
                   message = document.getElementById( 'load-message' );
-                  message.textContent = "Still crunching numbers... I know this takes a while."
-                }, 18000 );
+                  message.textContent = "Something broke... Try Again. Sorry! :("
+                }, 120000 );
 
                 setTimeout( function() {
-                  message = document.getElementById( 'load-message' );
-                  message.textContent = "Still crunching numbers... I know this takes a while."
-                }, 18000 );
+                  loader.hide();
+                  setTimeout( function() {
+                    location.reload();
+                  }, 600 );
+                }, 123000 );
 
 
                 username = $( ":text" ).val()
 
                 $.post( "/hater-score", { username: username, reverse: reverse }, function( data ) {
-                  console.log( "Data Loaded: " + data );
 
-                  setTimeout( function() {
                     message = document.getElementById( 'load-message' );
                     message.textContent = "Ok, hopefully we are wrapping up."
-                    // $(document).empty();
+
+                  setTimeout( function() {
+
                     page.append(data);
-                    // message.empty();
                     loader.hide();
                     $( '#load-message' ).addClass('hide');
                     classie.removeClass( pages[ currentPage ], 'show' );

@@ -157,7 +157,7 @@
                 $( document ).ajaxError(function() {
                   swal({
                     title: "Hmmm.",
-                    text: "That's probably not a real username.",
+                    text: "That's probably not a real username. FYI, they are case sensitive.",
                     type: "warning",
                     confirmButtonColor: "rgba(255, 102, 0, 0.76)",
                     confirmButtonText: "Try A New Username.",
@@ -185,7 +185,13 @@
                   }, 1000 );
                 });
               } else {
-                sweetAlert("Sorry.", "You have to put in a username from Hacker News.", "error");
+                swal({
+                    title: "Sorry.",
+                    text: "You have to put in a username from Hacker News.",
+                    type: "error",
+                    confirmButtonColor: "rgba(255, 102, 0, 0.76)",
+                    confirmButtonText: "Alrighty!",
+                });
               }
             } );
           } );

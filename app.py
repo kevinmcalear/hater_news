@@ -24,22 +24,31 @@ import code
 def get_user_comments(username, reverse=False):
     comments = []
     ids = []
-    reverse = reverse
-
+    reverse = ( reverse == 'true' )
     url_usr_strt = "https://hacker-news.firebaseio.com/v0/user/"
     url_itm_strt = "https://hacker-news.firebaseio.com/v0/item/"
     url_end = ".json"
     user = urlopen( url_usr_strt+username+url_end )
     user = json.loads( user.read() )
     if len(user['submitted']) > 45:
-        for c in user['submitted'][:46]:
-            item = urlopen( url_itm_strt+str(c)+url_end )
-            json_item = json.loads( item.read() )
-            if 'text' in json_item:
-                print smart_str(json_item['id'])
-                ids.append(smart_str(json_item['id']))
-                print smart_str(json_item['text'])
-                comments.append(smart_str(json_item['text']))
+        if reverse == True:
+            for c in user['submitted'][(len(user['submitted'])-46):len(user['submitted'])]:
+                item = urlopen( url_itm_strt+str(c)+url_end )
+                json_item = json.loads( item.read() )
+                if 'text' in json_item:
+                    print smart_str(json_item['id'])
+                    ids.append(smart_str(json_item['id']))
+                    print smart_str(json_item['text'])
+                    comments.append(smart_str(json_item['text']))
+        else:
+            for c in user['submitted'][:46]:
+                item = urlopen( url_itm_strt+str(c)+url_end )
+                json_item = json.loads( item.read() )
+                if 'text' in json_item:
+                    print smart_str(json_item['id'])
+                    ids.append(smart_str(json_item['id']))
+                    print smart_str(json_item['text'])
+                    comments.append(smart_str(json_item['text']))
     else:
         for c in user['submitted']:
             item = urlopen( url_itm_strt+str(c)+url_end )
@@ -49,9 +58,8 @@ def get_user_comments(username, reverse=False):
                 ids.append(smart_str(json_item['id']))
                 print smart_str(json_item['text'])
                 comments.append(smart_str(json_item['text']))
-    if reverse == True:
-        comments.reverse()
-        print "***************REVERSE DAT*************"
+
+    # comments = dict((k,v) for k,v in comments.iteritems() if v is not None)
 
     return { 'c':comments, 'id':ids }
 

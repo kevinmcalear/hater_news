@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Getting the guts of our app
 from flask import Flask, render_template, request
 # Setting up a connection to the internetz

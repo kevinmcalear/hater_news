@@ -131,6 +131,10 @@ Shout Outs to [@gavinmh](https://github.com/gavinmh), [@jamesbev](https://github
 ####Everything Else
 * My [Training Data](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data)
 * The [Hacker News API](https://github.com/HackerNews/API)
+* [Flask](http://flask.pocoo.org/) web framwork
+* [Jinja2](http://jinja.pocoo.org/docs/dev/) templating
+* [JQuery](http://jquery.com/) is life
+* [Snap.svg](http://snapsvg.io/) svg javascript library
 * [SweetAlert.js](https://github.com/t4t5/sweetalert) plugin for alerts
 * Guts of [Loading Screen Tutorial](http://tympanus.net/codrops/2014/04/23/page-loading-effects/)
 * [Custom Heroku buildpack](https://github.com/thenovices/heroku-buildpack-scipy) for Python with Numpy 1.8.1 and SciPy 0.14.0.

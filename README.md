@@ -6,7 +6,7 @@ Haterz Gonna Hate. But now you know who the haterz are.
 
 The Idea.
 ---------
-Using [Scikit Learn](http://scikit-learn.org/stable/)'s [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) and [Logistic Regression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) you can start to build out a way to analyize all the comments a user ever has posted in Hacker News and rank how big of a troll they are.
+Using [Scikit Learn](http://scikit-learn.org/stable/)'s [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html), some additional [hand-rolled features](https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py), and [Logistic Regression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) you can start to build out a way to analyize all the comments a user ever has posted in Hacker News and rank how big of a troll they are.
 
 
 How It's Built.

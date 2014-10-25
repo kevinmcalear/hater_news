@@ -12,7 +12,7 @@ Using [Scikit Learn](http://scikit-learn.org/stable/)'s [CountVectorizer](http:/
 How It's Built.
 ---------
 
-
+Feel free to download either [the HTML](https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.html) or [iPython Notebook](https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.ipynb) files from this repo. I tried to detail out my explorations and assumtions about the model so you can follow my logic and learn why and how I built everything.
 
 ***Side Note:*** I'm going to make it a [Chrome App](https://developer.chrome.com/extensions/getstarted) soon. I'm also going to build versions of this for Twitter, reddit, Instagram, Facebook, and maybe even dating apps. If you want to help, reach out! :)
 

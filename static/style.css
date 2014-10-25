@@ -165,8 +165,9 @@ section p {
   width: 48%;
   padding: 0 2em;
   float: left;
-  margin: 10px;
-  min-height: 250px;
+  margin: 0 1%;
+  margin-bottom: 25px;
+  min-height: 255px;
 }
 
 /* Demo links */

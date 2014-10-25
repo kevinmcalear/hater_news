@@ -17,10 +17,10 @@ Feel free to download either [the HTML](https://github.com/kevinmcalear/hater_ne
 ***Side Note:*** I'm going to make it a [Chrome App](https://developer.chrome.com/extensions/getstarted) soon. I'm also going to build versions of this for Twitter, reddit, Instagram, Facebook, and maybe even dating apps. If you want to help, reach out! :)
 
 
-Getting Started.
+Run The App Yourself.
 ---------
 
-####Prepare the app
+####Preparing the app
 
 Execute the following commands to clone this repo:
 

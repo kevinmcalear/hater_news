@@ -129,12 +129,12 @@ Acknowledgments
 Shout Outs to [@gavinmh](https://github.com/gavinmh), [@jamesbev](https://github.com/jamesbev), [@ShawnOakley](https://github.com/ShawnOakley), and [General Assembly](https://generalassemb.ly/)'s [Data Science Program](https://generalassemb.ly/education/data-science). Without the help I've had I would have no idea how to do anything Data Science related.
 
 ####Everything Else
-* My [Training Data](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data)
-* The [Hacker News API](https://github.com/HackerNews/API)
-* [Flask](http://flask.pocoo.org/) web framwork
-* [Jinja2](http://jinja.pocoo.org/docs/dev/) templating
-* [JQuery](http://jquery.com/) is life
-* [Snap.svg](http://snapsvg.io/) svg javascript library
-* [SweetAlert.js](https://github.com/t4t5/sweetalert) plugin for alerts
-* Guts of [Loading Screen Tutorial](http://tympanus.net/codrops/2014/04/23/page-loading-effects/)
+* My [Training Data](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data).
+* The [Hacker News API](https://github.com/HackerNews/API).
+* [Flask](http://flask.pocoo.org/) web framework.
+* [Jinja2](http://jinja.pocoo.org/docs/dev/) templating.
+* [JQuery](http://jquery.com/) is life.
+* [Snap.svg](http://snapsvg.io/) SVG javascript library.
+* [SweetAlert.js](https://github.com/t4t5/sweetalert) plugin for alerts.
+* Guts of [Loading Screen Tutorial](http://tympanus.net/codrops/2014/04/23/page-loading-effects/).
 * [Custom Heroku buildpack](https://github.com/thenovices/heroku-buildpack-scipy) for Python with Numpy 1.8.1 and SciPy 0.14.0.

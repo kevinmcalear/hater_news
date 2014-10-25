@@ -37,7 +37,7 @@ Once installed, you can use the heroku command from your command shell.
 	Could not find an existing public key.
 	Would you like to generate one? [Yn]
 	Generating new SSH public key.
-	Uploading ssh public key /Users/slither/.ssh/id_rsa.pub
+	Uploading ssh public key /Users/username/.ssh/id_rsa.pub
 	
 Press enter at the prompt to upload your existing ssh key or create a new one, used for pushing code later on.
 
@@ -45,19 +45,33 @@ To check that your key was added, type heroku keys. If your key isn’t there, y
 
 
 ####Prepare the app
-In this step, you will prepare a simple application that can be deployed.
 
-Execute the following commands to clone the sample application:
+Execute the following commands to clone this repo:
 
 	$ git clone git@github.com:kevinmcalear/hater_news.git
 	$ cd hater_news
-You now have a functioning git repository that contains a simple application as well as a requirements.txt file, which is used by Python’s dependency manager, Pip.
+
+You now have a functioning git repository that contains the app as well as a [requirements.txt](https://github.com/kevinmcalear/hater_news/blob/master/requirements.txt) and a [Procfile](https://github.com/kevinmcalear/hater_news/blob/master/Procfile), which are required to run our Heroku app.
+
+####Running the app locally
+
+You can run the app locally one of two ways:
+
+By using foreman:
+
+	$ foreman start
+
+Or by running the app.py file with python:
+	
+	$ python app.py
+	
+[foreman](https://github.com/ddollar/foreman) gives you a decent preview of how the app will run when on Heroku. I have printed out several things to the console for debugging and exploration which will show up if you run the app with the `python app.py` command.
 
 
-####Deploy the app
-In this step you will deploy the app to Heroku.
 
-Create an app on Heroku, which prepares Heroku to receive your source code. **note, we need to use [this buildpack](https://github.com/thenovices/heroku-buildpack-scipy) to get everything to work for sklearn and scipy specifically.*
+####Deploy the app to Heroku
+
+Create an app on Heroku, which prepares Heroku to receive your source code. * **Note:** we need to use [this buildpack](https://github.com/thenovices/heroku-buildpack-scipy) to get everything to work for sklearn and scipy.
 
 For a new app:
 
@@ -67,7 +81,7 @@ For an existing app:
 
 	heroku config:set BUILDPACK_URL=https://github.com/thenovices/heroku-buildpack-scipy
 
-This also creates a remote repository (called heroku) which it configures in your local git repo. Heroku generates a random name for your app - you can pass a parameter to specify your own, or rename it later with `heroku apps:rename`.
+This also creates a remote repository (called heroku) which it configures in your local git repo. Heroku generates a random name for your app.  * **Note:**  you can pass a parameter to specify your own name, or rename it later with `heroku apps:rename`.
 
 Now deploy your code:
 

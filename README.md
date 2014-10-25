@@ -20,6 +20,29 @@ Feel free to download either [the HTML](https://github.com/kevinmcalear/hater_ne
 Getting Started.
 ---------
 
+####Prepare the app
+
+Execute the following commands to clone this repo:
+
+	$ git clone git@github.com:kevinmcalear/hater_news.git
+	$ cd hater_news
+
+You now have a functioning git repository that contains the app as well as a [requirements.txt](https://github.com/kevinmcalear/hater_news/blob/master/requirements.txt) and a [Procfile](https://github.com/kevinmcalear/hater_news/blob/master/Procfile), which are required to run our app in Heroku or using foreman.
+
+####Running the app locally
+
+You can run the app locally one of two ways:
+
+By using foreman:
+
+	$ foreman start
+
+Or by running the app.py file with python:
+	
+	$ python app.py
+	
+[foreman](https://github.com/ddollar/foreman) gives you a decent preview of how the app will run when on Heroku. I have printed out several things to the console for debugging and exploration which will show up if you run the app with the `python app.py` command.
+
 ####Hosting with Heroku
 
 [Sign Up for Heroku](https://id.heroku.com/signup)
@@ -42,31 +65,6 @@ Once installed, you can use the heroku command from your command shell.
 Press enter at the prompt to upload your existing ssh key or create a new one, used for pushing code later on.
 
 To check that your key was added, type heroku keys. If your key isn’t there, you can add it manually by typing heroku keys:add. For more information about SSH keys, see [Managing Your SSH Keys](https://devcenter.heroku.com/articles/keys).
-
-
-####Prepare the app
-
-Execute the following commands to clone this repo:
-
-	$ git clone git@github.com:kevinmcalear/hater_news.git
-	$ cd hater_news
-
-You now have a functioning git repository that contains the app as well as a [requirements.txt](https://github.com/kevinmcalear/hater_news/blob/master/requirements.txt) and a [Procfile](https://github.com/kevinmcalear/hater_news/blob/master/Procfile), which are required to run our Heroku app.
-
-####Running the app locally
-
-You can run the app locally one of two ways:
-
-By using foreman:
-
-	$ foreman start
-
-Or by running the app.py file with python:
-	
-	$ python app.py
-	
-[foreman](https://github.com/ddollar/foreman) gives you a decent preview of how the app will run when on Heroku. I have printed out several things to the console for debugging and exploration which will show up if you run the app with the `python app.py` command.
-
 
 
 ####Deploy the app to Heroku

@@ -146,13 +146,34 @@ section p {
   .hide-s {
     display: none;
   }
+  #twitter-widget-0 {
+    float: left;
+    margin-left: 35% !important;
+    margin-top: 10px;
+  }
 
+  .fb_iframe_widget {
+    float: left;
+    /*margin-left: 20% !important;*/
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 23em) {
 
   .column {
     margin-left: -57px !important;
+  }
+  #twitter-widget-0 {
+    float: left;
+    margin-left: 30% !important;
+    margin-top: 10px;
+  }
+
+  .fb_iframe_widget {
+    float: left;
+    /*margin-left: 20% !important;*/
+    margin-top: 10px;
   }
 
 }
@@ -315,7 +336,17 @@ h1.logo {
   border-bottom: 2px solid grey;
 }
 
+#twitter-widget-0 {
+  float: left;
+  margin-left: 15px;
+  margin-top: 10px;
+}
 
+.fb_iframe_widget {
+  float: left;
+  margin-left: -25px;
+  margin-top: 10px;
+}
 
 /* SWEET ALERT */
 

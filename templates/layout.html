@@ -15,7 +15,7 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-  <a href="https://github.com/kevinmcalear/hater_news" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+  <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
     <div id="pagewrap" class="pagewrap">
       <div class="container show">
         <header class="header">
@@ -31,11 +31,11 @@
               <div class="columns" style="margin: 50px;">
                 <div class="column" style="background:white;">
                   <h3>Why</h3>
-                  <p style="color:grey;font-size: 15px;">The internet is covered in trolls who are filled with hate. It's time we started to expose them and put them in their place. Look for Twitter, Facebook, Instagram, and Reddit versions and a Chrome Extention as well. Want to help out? Feel free to fork the project or contribute to the codebase. <a href="mailto:kevin.mcalear@gmail.com">Reach Out</a><br><br>Hater News is a project made by <a href="http://twitter.com/kevinmcalear" target="_blank">Kevin McAlear</a>.</p>
+                  <p style="color:grey;font-size: 15px;margin-top: 10%;">The internet is covered in trolls who are filled with hate. It's time we started to expose them and put them in their place. Look for Twitter, Facebook, Instagram, and Reddit versions and a Chrome Extention as well. Want to help out? Feel free to fork the project or contribute to the codebase. <a href="mailto:kevin.mcalear@gmail.com">Reach Out</a><br><br>Hater News is a project made by <a href="http://twitter.com/kevinmcalear" target="_blank">Kevin McAlear</a>.</p>
                 </div>
                 <div class="column" style="background:white;">
                   <h3>How</h3>
-                  <p style="color:grey;font-size: 15px;">You give the program a username from <a href="https://news.ycombinator.com/" target="_blank">Hacker News</a>. It finds the 50 <span id="time-frame">most recent</span> comments that the user has made and runs the probability of each comment being insulting using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank">SciKit Learn's Count Vecteriztor</a>, some additional <a href="https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py" target="_blank">hand-rolled features</a>, and <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank">Logisitc Regression</a>. If you want to learn more, feel free to check out the <a href="https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.ipynb" target="_blank">iPython Notbook</a> for a detailed explination.</p>
+                  <p style="color:grey;font-size: 15px;margin-top: 10%;">You give the program a username from <a href="https://news.ycombinator.com/" target="_blank">Hacker News</a>. It finds the 50 <span id="time-frame">most recent</span> comments that the user has made and runs the probability of each comment being insulting using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank">SciKit Learn's Count Vecteriztor</a>, some additional <a href="https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py" target="_blank">hand-rolled features</a>, and <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank">Logisitc Regression</a>. If you want to learn more, feel free to check out the <a href="https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.ipynb" target="_blank">iPython Notbook</a> for a detailed explination.</p>
                 </div>
               </div>
           </div>
@@ -108,7 +108,7 @@
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Maybe you should stop hatin'."
                   if(!sent) {
-                    $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/8dxvoPhErPo?autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                    $('#load-message').append('<br><iframe style="hide-s" width="300" height="200" src="//www.youtube.com/embed/8dxvoPhErPo?autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
                   }
                 }, 12000 );
 
@@ -131,7 +131,7 @@
                   message = document.getElementById( 'load-message' );
                   message.textContent = "Still crunching numbers... I know this takes a while."
                   if(!sent) {
-                    $('#load-message').append('<br><iframe width="300" height="200" src="//www.youtube.com/embed/BfpV2e9PAE4?t=0m40s&autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
+                    $('#load-message').append('<br><iframe style="hide-s" width="300" height="200" src="//www.youtube.com/embed/BfpV2e9PAE4?t=0m40s&autoplay=1&controls=0&fs=0&disablekb=1&modestbranding=1&rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>');
                   }
                 }, 36000 );
 

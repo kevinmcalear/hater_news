@@ -18,7 +18,7 @@
 
 <h3 style="font-size: 35px;">Periodic Table Of Insults</h3>
 <p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in Hacker News.</p>
-<ul class="grid">
+<ul style="margin-left:-40px;" class="grid">
 {% for c in d.comments %}
   <a href="https://news.ycombinator.com/item?id={{ c.id }}" target="_blank"><li class="grid-item" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
 

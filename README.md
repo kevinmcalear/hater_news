@@ -43,7 +43,7 @@ Or by running the app.py file with python:
 	
 [foreman](https://github.com/ddollar/foreman) gives you a decent preview of how the app will run when on Heroku. I have printed out several things to the console for debugging and exploration which will show up if you run the app with the `python app.py` command.
 
-:globe_with_meridians: ####Hosting with Heroku
+####:metal: Hosting with Heroku
 
 [Sign Up for Heroku](https://id.heroku.com/signup)
 

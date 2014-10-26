@@ -154,7 +154,7 @@ section p {
 @media screen and (max-width: 23em) {
 
   .column {
-    margin-left: -57px;
+    margin-left: -57px !important;
   }
 
 }

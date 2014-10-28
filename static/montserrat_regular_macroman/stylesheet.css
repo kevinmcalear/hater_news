@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'montserratregular';
+    src: url('Montserrat-Regular-webfont.eot');
+    src: url('Montserrat-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Montserrat-Regular-webfont.woff') format('woff'),
+         url('Montserrat-Regular-webfont.ttf') format('truetype'),
+         url('Montserrat-Regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

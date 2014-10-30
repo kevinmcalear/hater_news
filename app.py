@@ -17,7 +17,30 @@ import numpy as np
 # For troubleshooting
 # Use This: code.interact(local=locals())
 import code
+# Adding in Reddit Schtufff
+import praw
 
+# Building Out Some Functions to Ping The Reddit API and Return Back Usable Lists Of Comments For Classifying
+# Documentation: http://praw.readthedocs.org/en/latest/pages/getting_started.html
+
+# Setting up our user_agent
+user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
+# creating our Reddit Connection
+r = praw.Reddit(user_agent=user_agent)
+
+user_name = "kevinmcalear"
+user = r.get_redditor(user_name)
+thing_limit = 50
+gen = user.get_comments(limit=thing_limit)
+for comment in gen:
+    print comment.body
+# karma_by_subreddit = {}
+# for thing in gen:
+#     subreddit = thing.subreddit.display_name
+#     karma_by_subreddit[subreddit] = (karma_by_subreddit.get(subreddit, 0) + thing.score)
+
+# import pprint
+# pprint.pprint(karma_by_subreddit)
 
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
 

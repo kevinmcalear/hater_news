@@ -20,20 +20,27 @@ import code
 # Adding in Reddit Schtufff
 import praw
 
+
 # Building Out Some Functions to Ping The Reddit API and Return Back Usable Lists Of Comments For Classifying
 # Documentation: http://praw.readthedocs.org/en/latest/pages/getting_started.html
-
-# Setting up our user_agent
-user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
-# creating our Reddit Connection
-r = praw.Reddit(user_agent=user_agent)
-
-user_name = "kevinmcalear"
-user = r.get_redditor(user_name)
-thing_limit = 50
-gen = user.get_comments(limit=thing_limit)
-for comment in gen:
-    print comment.body
+# Understanding sample app.
+# # Setting up our user_agent
+# reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
+# # Creating our Reddit Connection
+# reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
+# # Setting up our user_name
+# user_name = "kevinmcalear"
+# # Getting our user
+# user = reddit_instance.get_redditor(user_name)
+# # Setting up our comment limit
+# comment_limit = 50
+# # Pulling back our comments
+# call_return = user.get_comments(limit=comment_limit)
+# # pushing our comments into a list
+# comments = []
+# for comment in call_return:
+#     comments.append(comment.body)
+#     print comment.body
 # karma_by_subreddit = {}
 # for thing in gen:
 #     subreddit = thing.subreddit.display_name
@@ -41,6 +48,28 @@ for comment in gen:
 
 # import pprint
 # pprint.pprint(karma_by_subreddit)
+
+# Get all of a reddit user's comments
+def get_reddit_user_comments(username, reverse=False):
+    # Setting up our user_agent
+    reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
+    # Creating our Reddit Connection
+    reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
+    # Setting up our user_name
+    user_name = username
+    # Getting our user
+    user = reddit_instance.get_redditor(user_name)
+    # Setting up our comment limit
+    comment_limit = 50
+    # Pulling back our comments
+    call_return = user.get_comments(limit=comment_limit)
+    # pushing our comments into a list
+    comments = []
+    for comment in call_return:
+        comments.append({"c":comment.body, "id":comment.id})
+        print comment.body
+    return comments
+
 
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
 
@@ -150,6 +179,11 @@ print 'All loaded Captn\'!'
 @app.route('/')
 def display_form():
     return render_template('hater-form.html')
+
+# Setting up reddit
+@app.route('/reddit')
+def display_form():
+    return render_template('reddit-hater-form.html')
 
 # Setting up a way to get our form data
 @app.route('/hater-score', methods=['POST'])

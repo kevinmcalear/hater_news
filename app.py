@@ -50,7 +50,7 @@ import praw
 # pprint.pprint(karma_by_subreddit)
 
 # Get all of a reddit user's comments
-def get_reddit_user_comments(username, reverse=False):
+def get_reddit_user_comments(username, limit=50, reverse=False):
     # Setting up our user_agent
     reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
     # Creating our Reddit Connection
@@ -60,15 +60,22 @@ def get_reddit_user_comments(username, reverse=False):
     # Getting our user
     user = reddit_instance.get_redditor(user_name)
     # Setting up our comment limit
-    comment_limit = 50
+    comment_limit = limit
     # Pulling back our comments
     call_return = user.get_comments(limit=comment_limit)
     # pushing our comments into a list
     comments = []
+    ids = []
     for comment in call_return:
-        comments.append({"c":comment.body, "id":comment.id})
+        comments.append(comment.body)
+        ids.append(comment.permalink)
         print comment.body
-    return comments
+
+    print
+    print "***************************************"
+    print "Number of comments:", len(comments)
+
+    return { 'c':comments, 'id':ids }
 
 
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
@@ -90,7 +97,7 @@ def get_user_comments(username, reverse=False):
                 json_item = json.loads( item.read() )
                 if 'text' in json_item:
                     print smart_str(json_item['id'])
-                    ids.append(smart_str(json_item['id']))
+                    ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
                     print smart_str(json_item['text'])
                     comments.append(smart_str(json_item['text']))
         else:
@@ -99,7 +106,7 @@ def get_user_comments(username, reverse=False):
                 json_item = json.loads( item.read() )
                 if 'text' in json_item:
                     print smart_str(json_item['id'])
-                    ids.append(smart_str(json_item['id']))
+                    ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
                     print smart_str(json_item['text'])
                     comments.append(smart_str(json_item['text']))
     else:
@@ -108,7 +115,7 @@ def get_user_comments(username, reverse=False):
             json_item = json.loads( item.read() )
             if 'text' in json_item:
                 print smart_str(json_item['id'])
-                ids.append(smart_str(json_item['id']))
+                ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
                 print smart_str(json_item['text'])
                 comments.append(smart_str(json_item['text']))
 
@@ -180,20 +187,30 @@ print 'All loaded Captn\'!'
 def display_form():
     return render_template('hater-form.html')
 
-# Setting up reddit
-@app.route('/reddit')
-def display_form():
-    return render_template('reddit-hater-form.html')
+# # Setting up reddit
+# @app.route('/reddit')
+# def display_form():
+#     return render_template('reddit-hater-form.html')
 
 # Setting up a way to get our form data
 @app.route('/hater-score', methods=['POST'])
 def predict_hate():
     # Saving our data from the form so we can use it.
+    network = request.form['network']
     username = request.form['username']
-    comments = []
-    print request
     reverse = request.form['reverse']
-    temp = get_user_comments(username, reverse=reverse)
+
+    print request
+    if network == 'hn':
+        user_page = 'https://news.ycombinator.com/user?id='
+        temp = get_user_comments(username, reverse=reverse)
+
+    if network == 'reddit':
+        user_page = 'http://www.reddit.com/user/'
+        temp = get_reddit_user_comments(username, reverse=reverse)
+
+    comments = []
+
     text = filter(None, temp['c'])
     predictions = user_score(temp, vect, clf)
     ids = temp['id']
@@ -215,6 +232,7 @@ def predict_hate():
     print 'predicting hater score for %s' % username
     d = {
         'username': username,
+        'userpage': user_page+username,
         'comments': comments,
         'score': calculate_score(predictions),
         'hater_level': hater_level[0],

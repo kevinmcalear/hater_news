@@ -92,6 +92,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
             "Haterz gon' hate. But now you know who the haterz are.",
           ];
           reverse = false;
+          network = 'hn'
 
           setTimeout( function() {
             $("input[name='reverse']").on('change', function(){
@@ -104,6 +105,14 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
               };
             });
            }, 200 );
+
+          setTimeout( function() {
+            $("input:radio[name=social-network]").click(function() {
+                network = $(this).val();
+            });
+           }, 200 );
+
+
 
         function init() {
           triggerLoading.forEach( function( trigger ) {
@@ -176,7 +185,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                 }, 123000 );
 
                 sent = false;
-                username = $( ":text" ).val().trim()
+                username = $( ":text" ).val().trim();
 
                 // Error handling if a username doesn't exist
                 $( document ).ajaxError(function() {
@@ -192,7 +201,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                   });
                 });
 
-                $.post( "/hater-score", { username: username, reverse: reverse }, function( data ) {
+                $.post( "/hater-score", { username: username, reverse: reverse, network: network }, function( data ) {
                     sent = true;
                     message = document.getElementById( 'load-message' );
                     message.textContent = "Ok, hopefully we are wrapping up."

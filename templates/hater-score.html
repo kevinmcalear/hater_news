@@ -1,4 +1,4 @@
-<h3 style="color: rgba(0, 0, 0, 0.67);"><a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);">{{ d.username }}'s</a> Hater Score:<h3>
+<h3 style="color: rgba(0, 0, 0, 0.67);"><a href="{{ d.userpage }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);">{{ d.username }}'s</a> Hater Score:<h3>
 <h1 style="font-size: 50px;margin-bottom: 20px;">{{ d.score | round(2, 'ceil')}}%<span style="color:rgba(0, 0, 0, 0.25);font-size:20px;display:block;font-weight:100;">Of The Time Spent Hating.</span></h1>
 <div style="
     width: 200px;
@@ -20,7 +20,7 @@
 <p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in Hacker News.</p>
 <ul style="margin-left:-40px;" class="grid">
 {% for c in d.comments %}
-  <a href="https://news.ycombinator.com/item?id={{ c.id }}" target="_blank"><li class="grid-item" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
+  <a href="{{ c.id }}" target="_blank"><li class="grid-item" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
 
 {% endfor %}
 </ul>
@@ -29,9 +29,9 @@
 <span style="display:inline-block;height:10px;width:10px;background:{{ d.worst_comment.color }};"></span> <span style="font-weight:bold;">The Worst Comment</span>
 <br><!-- <span style="color:grey;font-size: 12px;margin-bottom:2px;">( {{ d.worst_comment.score | round(2, 'ceil') }} hate filled )</span>  -->
 <br>
-<a href="https://news.ycombinator.com/item?id={{ d.worst_comment.id }}" target="_blank" style="font-size:20px;max-width:800px;display:inline-block;">"{{ d.worst_comment.comment| truncate(250) | safe }}"</a>
+<a href="{{ d.worst_comment.id }}" target="_blank" style="font-size:20px;max-width:800px;display:inline-block;">"{{ d.worst_comment.comment| truncate(250) | safe }}"</a>
 <br>
-<a href="https://news.ycombinator.com/user?id={{ d.username }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);font-size:17px;margin-top:10px;display:inline-block;">-{{ d.username }}</a>
+<a href="{{ d.userpage }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);font-size:17px;margin-top:10px;display:inline-block;">-{{ d.username }}</a>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

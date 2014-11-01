@@ -235,7 +235,7 @@ def predict_hate():
         'userpage': user_page+username,
         'comments': comments,
         'score': calculate_score(predictions),
-        'hater_level': hater_level[0],
+        'hater_level': .001 if (hater_level[0] < .01) else p[1]+.01,
         'lover_level': hater_level[1],
         'worst_comment': worst_comment[-1]
     }

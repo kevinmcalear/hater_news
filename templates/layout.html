@@ -33,7 +33,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
     <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
     <div id="pagewrap" class="pagewrap">
       <div class="container show">
-        <header class="header">
+        <header class="header hn">
           <a class="twitter-share-button"
              href="https://twitter.com/intent/tweet?screen_name=HackerNews&button_hashtag=HaterNews"
              data-url="http://haternews.co"
@@ -44,7 +44,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
           window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
           </script>
           <div class="fb-share-button" data-href="http://haternews.co" data-width="60px" data-layout="button"></div>
-          <a href="/"><h1 class="logo">Hater News<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon' hate. But now you know who the haterz are.</p></h1></a>
+          <a href="/"><h1 class="logo hn">Hater News<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon' hate. But now you know who the haterz are.</p></h1></a>
           <div style="margin:50px"></div>
         </header><!-- /header -->
         <section class="columns clearfix">
@@ -109,6 +109,20 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
           setTimeout( function() {
             $("input:radio[name=social-network]").click(function() {
                 network = $(this).val();
+                if ( network == 'hn' ) {
+                  $('.reddit').removeClass('reddit').addClass('hn')
+                  $('h1.logo').text('Hater News').append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                  $('body').css('color','rgba(255, 102, 0, 0.76)')
+                  $('label[for=reverse_checkbox]').css('color','rgba(255, 102, 0, 0.76)')
+                }
+                if ( network == 'reddit' ) {
+                  $('.hn').removeClass('hn').addClass('reddit')
+                  $('h1.logo').text('Reddit Haterz').append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                  $('body').css('color','rgba(95, 153, 207, 0.68)')
+                  $('label[for=reverse_checkbox]').css('color','rgba(95, 153, 207, 0.68)')
+                  // color: rgba(95, 153, 207, 0.68);
+                  // background-color: rgba(206, 227, 248, 0.63);
+                }
             });
            }, 200 );
 

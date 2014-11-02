@@ -20,7 +20,7 @@
 <p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in Hacker News.</p>
 <ul style="margin-left:-40px;" class="grid">
 {% for c in d.comments %}
-  <a href="{{ c.id }}" target="_blank"><li class="grid-item" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
+  <a href="{{ c.id }}" target="_blank"><li class="grid-item hn" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
 
 {% endfor %}
 </ul>

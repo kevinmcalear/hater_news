@@ -297,23 +297,47 @@ input {border:0; outline:none;}
   line-height: 50px;
 }
 
-li.grid-item:hover {
+li.grid-item.hn:hover {
   background: rgba(255, 116, 0, 0.44) !important;
 }
 
-header.header {
+header.header.hn {
   width: 100%;
   background: rgba(3, 3, 3, 0.02);
   height: 200px;
 }
 
-h1.logo {
+h1.logo.hn {
   text-shadow: 1px 2px rgba(0, 0, 0, 0.16);
   font-size: 60px;
   padding: 40px 0px;
   color:rgba(255, 102, 0, 0.76);
   margin-top: 0px;
 }
+
+
+/* Reddit Theme */
+
+li.grid-item.reddit:hover {
+  background: rgba(255, 116, 0, 0.44) !important;
+}
+
+header.header.reddit {
+  width: 100%;
+  height: 200px;
+  color: rgba(95, 153, 207, 0.68);
+  background-color: rgba(206, 227, 248, 0.63);
+}
+
+h1.logo.reddit {
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.16);
+  font-size: 60px;
+  padding: 40px 0px;
+  margin-top: 0px;
+  color: rgba(95, 153, 207, 0.68);
+}
+
+
 
 
 
@@ -347,6 +371,11 @@ h1.logo {
   margin-left: -25px;
   margin-top: 10px;
 }
+
+
+
+
+
 
 /* SWEET ALERT */
 

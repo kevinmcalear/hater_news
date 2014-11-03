@@ -14,13 +14,16 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
     <meta property="og:url" content="http://haternews.herokuapp.com/"/>
     <meta property="og:title" content="Hater News. | Haterz gon' hate, but now you know who the haterz are." />
     <meta property="og:description" content="The internet is covered in trolls who are filled with hate. It's time we started to expose them using some machine learning." />
-    <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='classie.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='snap.svg-min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='svgLoader.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='sweet-alert.js') }}"></script>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.js"></script>
+    <link href="//cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" rel="stylesheet">
   </head>
   <body>
     <div id="fb-root"></div>
@@ -31,7 +34,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=744530812307672&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
     <div id="pagewrap" class="pagewrap">
       <div class="container show">
         <header class="header hn">

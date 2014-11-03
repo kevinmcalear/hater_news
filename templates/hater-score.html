@@ -16,8 +16,8 @@
 <img class="sticker-img" style="opacity:{{ d.hater_level }};" src="{{ url_for('static', filename='douchebag.jpg') }}">
 
 
-<h3 style="font-size: 35px;">Periodic Table Of Insults</h3>
-<p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in Hacker News.</p>
+<h3 style="font-size: 35px;cursor:pointer;" id="pt-title">Periodic Table Of Insults<span style="color:rgba(255, 89, 89, .75);">*</span></h3>
+<p  style="color:grey;font-size: 12px;margin-bottom:2px;">The letters below are the first two letters of the first word of each comment. The darker red the box, the more insulting the comment.<br> Click on a box to see the comment in <span id="pt-network">Hacker News</span>.</p>
 <ul style="margin-left:-40px;" class="grid">
 {% for c in d.comments %}
   <a href="{{ c.id }}" target="_blank"><li class="grid-item hn" style="background:{{ c.color }};">{{ c.comment[0:2] }}</li></a>
@@ -26,7 +26,7 @@
 </ul>
 <br>
 <br>
-<span style="display:inline-block;height:10px;width:10px;background:{{ d.worst_comment.color }};"></span> <span style="font-weight:bold;">The Worst Comment</span>
+<span style="display:inline-block;height:10px;width:10px;background:{{ d.worst_comment.color }};"></span> <span style="font-weight:bold;cursor:pointer;" id="worst-comment">The Worst Comment</span><span style="color:rgba(255, 89, 89, .75);">*</span>
 <br><!-- <span style="color:grey;font-size: 12px;margin-bottom:2px;">( {{ d.worst_comment.score | round(2, 'ceil') }} hate filled )</span>  -->
 <br>
 <a href="{{ d.worst_comment.id }}" target="_blank" style="font-size:20px;max-width:800px;display:inline-block;">"{{ d.worst_comment.comment| truncate(250) | safe }}"</a>
@@ -43,9 +43,41 @@
 
 </script>
 <script>
-  setTimeout( function() {
+  $(document).ready(function() {
+   // Switching out stuff for Reddit
     if ($('.reddit').length > 0) {
       $('li.grid-item.hn').removeClass('hn').addClass('reddit');
+      $('#pt-network').text("Reddit");
     }
-  }, 200);
+    // Tooltip explaining The hater score periodic table of hate
+      $('#pt-title').qtip({
+        content: {
+          text: '<span style="color:grey;">This section takes each comment analyzed and creates a heat map of how potentially insulting each comment is (the darker red the more insulting).<br><br> This <b>does not</b> mean that any of the comments are in fact insulting as this section should be looked at with your total score ({{ d.score | round(2, 'ceil')}}%) in mind. Your "hater score" is an average of these comments.</span>',
+          title: '<b style="color: rgba(0, 0, 0, 0.67);">How It Works</b>'
+        },
+        position: {
+          my: 'bottom center',  // Position my top left...
+          at: 'top center', // at the bottom right of...
+          target: $('#pt-title') // my target
+        },
+        style: {
+          classes: 'qtip-bootstrap'
+        }
+      });
+      // Tooltip explaining the worst comment
+      $('#worst-comment').qtip({
+        content: {
+          text: '<span style="color:grey;">This is your most insulting comment calculated based on the comments we pulled back.<br><br> This <b>does not</b> mean that this comment is actually insulting. It just means it is the "worst" comment out of the bunch.<br><br> Also, remember to view this section in the context of your total score ({{ d.score | round(2, 'ceil')}}%).</span>',
+          title: '<b style="color: rgba(0, 0, 0, 0.67);">What Your Worst Comment Means</b>'
+        },
+        position: {
+          my: 'bottom center',  // Position my top left...
+          at: 'top center', // at the bottom right of...
+          target: $('#worst-comment') // my target
+        },
+        style: {
+          classes: 'qtip-bootstrap'
+        }
+      });
+  });
 </script>

@@ -2,9 +2,16 @@
 {% block body %}
 
     <form action="{{ url_for('predict_hate') }}" method="post" class="add-prediction">
-      <div>
-        <label> <input type="radio" name="social-network" value="hn" checked> Hacker News </label>
-        <label> <input type="radio" name="social-network" value="reddit"> Reddit </label>
+      <div class="network-choice">
+      Choose Your Network:<br><br>
+        <label style="color:rgba(255, 102, 0, 0.76);" class="social-item">
+          <input type="radio" name="social-network" value="hn" checked>
+          <i style="font-size:40px;color:rgba(255, 102, 0, 0.76);" class="fa fa-hacker-news"></i> <span style="display:block;">Hacker News</span>
+        </label>
+        <label style="color: rgba(95, 153, 207, 0.68);width:10px" class="social-item">
+          <input type="radio" name="social-network" value="reddit">
+          <i style="font-size:40px;color: rgba(95, 153, 207, 0.68);font-weight:600;" class="fa fa-reddit"></i> <span style="display:block;margin-left:-5px;">Reddit</span>
+        </label>
       </div>
       <h3 style="color: rgba(0, 0, 0, 0.67);">A Hacker News Username Please:</h3>
       <div>

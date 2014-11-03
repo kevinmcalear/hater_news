@@ -42,3 +42,10 @@
   ga('send', 'pageview');
 
 </script>
+<script>
+  setTimeout( function() {
+    if ($('.reddit').length > 0) {
+      $('li.grid-item.hn').removeClass('hn').addClass('reddit');
+    }
+  }, 200);
+</script>

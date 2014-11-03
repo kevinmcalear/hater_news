@@ -20,6 +20,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
     <script type="text/javascript" src="{{ url_for('static', filename='svgLoader.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='sweet-alert.js') }}"></script>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
     <div id="fb-root"></div>
@@ -30,7 +31,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=744530812307672&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <a class="hide-s" href="https://github.com/kevinmcalear/hater_news" target="_blank"><img class="hide-s" style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
     <div id="pagewrap" class="pagewrap">
       <div class="container show">
         <header class="header hn">
@@ -60,7 +61,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                 </div>
                 <div class="column" style="background:white;">
                   <h3>How</h3>
-                  <p style="color:grey;font-size: 15px;margin-top: 10%;">You give the program a username from <a href="https://news.ycombinator.com/" target="_blank">Hacker News</a>. It finds the 50 <span id="time-frame">most recent</span> comments that the user has made and runs the probability of each comment being insulting using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank">SciKit Learn's Count Vectorizer</a>, some additional <a href="https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py" target="_blank">hand-rolled features</a>, and <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank">Logistic Regression</a>. If you want to learn more, feel free to check out the <a href="https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.ipynb" target="_blank">iPython Notbook</a> for a detailed explanation.</p>
+                  <p style="color:grey;font-size: 15px;margin-top: 10%;">You give the program a username from <a id="the-network" href="https://news.ycombinator.com/" target="_blank">Hacker News</a>. It finds the 50 <span id="time-frame">most recent</span> comments that the user has made and runs the probability of each comment being insulting using <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank">SciKit Learn's Count Vectorizer</a>, some additional <a href="https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py" target="_blank">hand-rolled features</a>, and <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank">Logistic Regression</a>. If you want to learn more, feel free to check out the <a href="https://github.com/kevinmcalear/hater_news/blob/master/haterz_classification.ipynb" target="_blank">iPython Notbook</a> for a detailed explanation.</p>
                 </div>
               </div>
           </div>
@@ -69,7 +70,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
     <div class="container" id="page-2">
     </div><!-- /container -->
 
-    <div id="loader" class="pageload-overlay" data-opening="M20,15 50,30 50,30 30,30 Z;M0,0 80,0 50,30 20,45 Z;M0,0 80,0 60,45 0,60 Z;M0,0 80,0 80,60 0,60 Z" data-closing="M0,0 80,0 60,45 0,60 Z;M0,0 80,0 50,30 20,45 Z;M20,15 50,30 50,30 30,30 Z;M30,30 50,30 50,30 30,30 Z">
+    <div id="loader" class="pageload-overlay hn" data-opening="M20,15 50,30 50,30 30,30 Z;M0,0 80,0 50,30 20,45 Z;M0,0 80,0 60,45 0,60 Z;M0,0 80,0 80,60 0,60 Z" data-closing="M0,0 80,0 60,45 0,60 Z;M0,0 80,0 50,30 20,45 Z;M20,15 50,30 50,30 30,30 Z;M30,30 50,30 50,30 30,30 Z">
     <div style="z-index:999;color:#BABABA;;position:relative;text-align:center;margin:30%;">
        <h1 id="load-message" class="hide">Trolling For Your Troll Level...</h1>
       </div>
@@ -110,18 +111,40 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
             $("input:radio[name=social-network]").click(function() {
                 network = $(this).val();
                 if ( network == 'hn' ) {
-                  $('.reddit').removeClass('reddit').addClass('hn')
-                  $('h1.logo').text('Hater News').append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
-                  $('body').css('color','rgba(255, 102, 0, 0.76)')
-                  $('label[for=reverse_checkbox]').css('color','rgba(255, 102, 0, 0.76)')
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Hater News')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','rgba(255, 102, 0, 0.76)');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','rgba(255, 102, 0, 0.76)');
+                    $('.reddit')
+                      .removeClass('reddit')
+                      .addClass('hn');
+                    $('#the-network').text("Hacker News");
+                  });
+
+
                 }
                 if ( network == 'reddit' ) {
-                  $('.hn').removeClass('hn').addClass('reddit')
-                  $('h1.logo').text('Reddit Haterz').append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
-                  $('body').css('color','rgba(95, 153, 207, 0.68)')
-                  $('label[for=reverse_checkbox]').css('color','rgba(95, 153, 207, 0.68)')
-                  // color: rgba(95, 153, 207, 0.68);
-                  // background-color: rgba(206, 227, 248, 0.63);
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Reddit Haterz')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','rgba(95, 153, 207, 0.68)');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','rgba(95, 153, 207, 0.68)');
+                    $('.hn')
+                      .removeClass('hn')
+                      .addClass('reddit');
+                    $('#the-network').text("Reddit").attr('href','http://www.reddit.com/');
+                  });
                 }
             });
            }, 200 );

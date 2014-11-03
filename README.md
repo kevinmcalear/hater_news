@@ -6,7 +6,7 @@ Haterz Gonna Hate. But now you know who the haterz are.
 
 :bulb: The Idea.
 ---------
-Using [Scikit Learn](http://scikit-learn.org/stable/)'s [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html), some additional [hand-rolled features](https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py), and [Logistic Regression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) you can start to build out a way to analyize all the comments a user ever has posted in Hacker News and rank how big of a troll they are.
+Using [Scikit Learn](http://scikit-learn.org/stable/)'s [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html), some additional [hand-rolled features](https://github.com/kevinmcalear/hater_news/blob/master/its_pkl_time.py), and [Logistic Regression](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) you can start to build out a way to analyize all the comments a user ever has posted in [Hacker News](https://news.ycombinator.com/) or [Reddit](http://www.reddit.com/) and rank how big of a troll they are.
 
 
 :squirrel: How It's Built.
@@ -129,6 +129,7 @@ Shout Outs to [@gavinmh](https://github.com/gavinmh), [@jamesbev](https://github
 ####Everything Else
 * My [Training Data](https://www.kaggle.com/c/detecting-insults-in-social-commentary/data).
 * The [Hacker News API](https://github.com/HackerNews/API).
+* [PRAW ("Python Reddit API Wrapper")](https://github.com/praw-dev/praw) for Reddit's API.
 * [Flask](http://flask.pocoo.org/) web framework.
 * [Jinja2](http://jinja.pocoo.org/docs/dev/) templating.
 * [JQuery](http://jquery.com/) is life.

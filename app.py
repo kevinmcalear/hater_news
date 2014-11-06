@@ -24,14 +24,17 @@ import tweepy
 # For Environmental Variables (Like API Keys)
 import os
 
+# Setting up our user_agent
+reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
+# Creating our Reddit Connection
+reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
+
 
 # Setting Up Twitter API Keys & Such
 HNTWTR_CONSUMER_KEY = os.environ['HNTWTR_CONSUMER_KEY']
 HNTWTR_CONSUMER_SECRET = os.environ['HNTWTR_CONSUMER_SECRET']
 HNTWTR_ACCESS_TOKEN = os.environ['HNTWTR_ACCESS_TOKEN']
 HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
-
-
 
 # Setting up basic Twitter Auth Stuff Further
 auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
@@ -60,10 +63,6 @@ def get_twitter_comments(username, limit=500, reverse=False):
 
 # Get all of a reddit user's comments
 def get_reddit_user_comments(username, limit=45, reverse=False):
-    # Setting up our user_agent
-    reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
-    # Creating our Reddit Connection
-    reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
     # Setting up our user_name
     user_name = username
     # Getting our user

@@ -19,35 +19,44 @@ import numpy as np
 import code
 # Adding in Reddit Schtufff
 import praw
+# Adding in Twitter
+import tweepy
+# For Environmental Variables (Like API Keys)
+import os
 
 
-# Building Out Some Functions to Ping The Reddit API and Return Back Usable Lists Of Comments For Classifying
-# Documentation: http://praw.readthedocs.org/en/latest/pages/getting_started.html
-# Understanding sample app.
-# # Setting up our user_agent
-# reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
-# # Creating our Reddit Connection
-# reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
-# # Setting up our user_name
-# user_name = "kevinmcalear"
-# # Getting our user
-# user = reddit_instance.get_redditor(user_name)
-# # Setting up our comment limit
-# comment_limit = 50
-# # Pulling back our comments
-# call_return = user.get_comments(limit=comment_limit)
-# # pushing our comments into a list
-# comments = []
-# for comment in call_return:
-#     comments.append(comment.body)
-#     print comment.body
-# karma_by_subreddit = {}
-# for thing in gen:
-#     subreddit = thing.subreddit.display_name
-#     karma_by_subreddit[subreddit] = (karma_by_subreddit.get(subreddit, 0) + thing.score)
+# Setting Up Twitter API Keys & Such
+HNTWTR_CONSUMER_KEY = os.environ['HNTWTR_CONSUMER_KEY']
+HNTWTR_CONSUMER_SECRET = os.environ['HNTWTR_CONSUMER_SECRET']
+HNTWTR_ACCESS_TOKEN = os.environ['HNTWTR_ACCESS_TOKEN']
+HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
 
-# import pprint
-# pprint.pprint(karma_by_subreddit)
+
+
+# Setting up basic Twitter Auth Stuff Further
+auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
+auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth)
+
+
+
+# Get all of a twitter user's comments
+def get_twitter_comments(username, limit=500, reverse=False):
+    comments = []
+    ids = []
+    public_tweets = api.user_timeline(screen_name=username,count=limit)
+
+    for tweet in public_tweets:
+        print tweet.text, tweet.id
+        print "*************************************************************"
+        print
+        comments.append(tweet.text)
+        ids.append('https://twitter.com/haternews/status/'+str(tweet.id))
+
+    return { 'c':comments, 'id':ids }
+
+
+
 
 # Get all of a reddit user's comments
 def get_reddit_user_comments(username, limit=45, reverse=False):
@@ -208,6 +217,10 @@ def predict_hate():
     if network == 'reddit':
         user_page = 'http://www.reddit.com/user/'
         temp = get_reddit_user_comments(username, reverse=reverse)
+
+    if network == 'twitter':
+        user_page = 'http://www.twitter.com/'
+        temp = get_twitter_comments(username, reverse=reverse)
 
     comments = []
 

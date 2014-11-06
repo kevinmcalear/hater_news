@@ -125,7 +125,12 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('label[for=reverse_checkbox]')
                       .css('color','rgba(255, 102, 0, 0.76)');
                     $('.reddit')
+                      .removeClass('twitter')
                       .removeClass('reddit')
+                      .addClass('hn');
+                    $('.twitter')
+                      .removeClass('reddit')
+                      .removeClass('twitter')
                       .addClass('hn');
                     $('#the-network').text("Hacker News");
                   });
@@ -144,9 +149,36 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('label[for=reverse_checkbox]')
                       .css('color','rgba(95, 153, 207, 0.68)');
                     $('.hn')
+                      .removeClass('twitter')
                       .removeClass('hn')
                       .addClass('reddit');
+                    $('.twitter')
+                      .removeClass('hn')
+                      .removeClass('twitter')
+                      .addClass('reddit');
                     $('#the-network').text("Reddit").attr('href','http://www.reddit.com/');
+                  });
+                }
+                if ( network == 'twitter' ) {
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Twitter Trollz')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','#55acee');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','#55acee');
+                    $('.hn')
+                      .removeClass('reddit')
+                      .removeClass('hn')
+                      .addClass('twitter');
+                    $('.reddit')
+                      .removeClass('hn')
+                      .removeClass('reddit')
+                      .addClass('twitter');
+                    $('#the-network').text("Twitter").attr('href','http://www.twitter.com/');
                   });
                 }
             });

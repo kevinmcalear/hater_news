@@ -32,7 +32,7 @@ def get_twitter_comments(username, limit=500, reverse=False):
     comments = []
     ids = []
     public_tweets = api.user_timeline(screen_name=username,count=limit)
-
+    print "testing..."
     for tweet in public_tweets:
         print tweet.text, tweet.id
         print "*************************************************************"
@@ -117,6 +117,7 @@ def get_user_comments(username, reverse=False):
 
 # Get a final Hater Score. 100 is the worst, 0 is the best.
 def calculate_score(predictions):
+    print "testing CALC..."
     total_score = []
     for s in predictions:
         total_score.append(s[1])
@@ -184,10 +185,7 @@ HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
 auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
 auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
-print HNTWTR_CONSUMER_KEY
-print HNTWTR_CONSUMER_SECRET
-print HNTWTR_ACCESS_TOKEN
-print HNTWTR_ACCESS_TOKEN_SECRET
+
 
 print 'Loading clf & vect...'
 vect = joblib.load('vect.pkl')
@@ -197,6 +195,7 @@ print 'All loaded Captn\'!'
 # Setting up our base route
 @app.route('/')
 def display_form():
+    print "testing DISPLAY..."
     return render_template('hater-form.html')
 
 # # Setting up reddit
@@ -207,6 +206,7 @@ def display_form():
 # Setting up a way to get our form data
 @app.route('/hater-score', methods=['POST'])
 def predict_hate():
+    print "testing HATE..."
     # Saving our data from the form so we can use it.
     network = request.form['network']
     username = request.form['username']

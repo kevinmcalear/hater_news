@@ -211,7 +211,7 @@ def predict_hate():
     network = request.form['network']
     username = request.form['username']
     reverse = request.form['reverse']
-
+    print "testing... youaofuoasydfoasd"
     print request
     if network == 'hn':
         user_page = 'https://news.ycombinator.com/user?id='
@@ -224,14 +224,14 @@ def predict_hate():
     if network == 'twitter':
         user_page = 'http://www.twitter.com/'
         temp = get_twitter_comments(username, reverse=reverse)
-
+    print "twhowtwerwerhererrrr"
     comments = []
 
     text = filter(None, temp['c'])
     predictions = user_score(temp, vect, clf)
     ids = temp['id']
     colors = []
-
+    print "NO IDEADDDDD"
     for p in predictions:
         # if p[1] > .2:
             # colors.append( "rgba(89, 255, 160, "+str(p[0]+.01)+")" )

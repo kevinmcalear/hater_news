@@ -184,7 +184,10 @@ HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
 auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
 auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
+print HNTWTR_CONSUMER_KEY
+print HNTWTR_CONSUMER_SECRET
 print HNTWTR_ACCESS_TOKEN
+print HNTWTR_ACCESS_TOKEN_SECRET
 
 print 'Loading clf & vect...'
 vect = joblib.load('vect.pkl')

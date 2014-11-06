@@ -31,10 +31,10 @@ reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
 
 
 # Setting Up Twitter API Keys & Such
-HNTWTR_CONSUMER_KEY = os.environ['HNTWTR_CONSUMER_KEY']
-HNTWTR_CONSUMER_SECRET = os.environ['HNTWTR_CONSUMER_SECRET']
-HNTWTR_ACCESS_TOKEN = os.environ['HNTWTR_ACCESS_TOKEN']
-HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
+HNTWTR_CONSUMER_KEY = os.environ.get('HNTWTR_CONSUMER_KEY')
+HNTWTR_CONSUMER_SECRET = os.environ.get('HNTWTR_CONSUMER_SECRET')
+HNTWTR_ACCESS_TOKEN = os.environ.get('HNTWTR_ACCESS_TOKEN')
+HNTWTR_ACCESS_TOKEN_SECRET = os.environ.get('HNTWTR_ACCESS_TOKEN_SECRET')
 
 # Setting up basic Twitter Auth Stuff Further
 auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)

@@ -24,22 +24,6 @@ import tweepy
 # For Environmental Variables (Like API Keys)
 import os
 
-# Setting up our user_agent
-reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
-# Creating our Reddit Connection
-reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
-
-
-# Setting Up Twitter API Keys & Such
-HNTWTR_CONSUMER_KEY = os.environ['HNTWTR_CONSUMER_KEY']
-HNTWTR_CONSUMER_SECRET = os.environ['HNTWTR_CONSUMER_SECRET']
-HNTWTR_ACCESS_TOKEN = os.environ['HNTWTR_ACCESS_TOKEN']
-HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
-
-# Setting up basic Twitter Auth Stuff Further
-auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
-auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth)
 
 
 
@@ -183,7 +167,24 @@ def user_score(comments, my_vect, clf):
 
 # Setting up app
 app = Flask(__name__)
+print 'Setting up API Keys and Such...'
+# Setting up our user_agent
+reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
+# Creating our Reddit Connection
+reddit_instance = praw.Reddit(user_agent=reddit_user_agent)
 
+
+# Setting Up Twitter API Keys & Such
+HNTWTR_CONSUMER_KEY = os.environ['HNTWTR_CONSUMER_KEY']
+HNTWTR_CONSUMER_SECRET = os.environ['HNTWTR_CONSUMER_SECRET']
+HNTWTR_ACCESS_TOKEN = os.environ['HNTWTR_ACCESS_TOKEN']
+HNTWTR_ACCESS_TOKEN_SECRET = os.environ['HNTWTR_ACCESS_TOKEN_SECRET']
+
+# Setting up basic Twitter Auth Stuff Further
+auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
+auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth)
+print HNTWTR_ACCESS_TOKEN
 
 print 'Loading clf & vect...'
 vect = joblib.load('vect.pkl')

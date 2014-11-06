@@ -50,7 +50,7 @@ import praw
 # pprint.pprint(karma_by_subreddit)
 
 # Get all of a reddit user's comments
-def get_reddit_user_comments(username, limit=50, reverse=False):
+def get_reddit_user_comments(username, limit=45, reverse=False):
     # Setting up our user_agent
     reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")
     # Creating our Reddit Connection

@@ -32,7 +32,7 @@ def get_twitter_comments(username, limit=500, reverse=False):
     comments = []
     ids = []
     public_tweets = api.user_timeline(screen_name=username,count=limit)
-    print "testing..."
+
     for tweet in public_tweets:
         print tweet.text, tweet.id
         print "*************************************************************"
@@ -117,7 +117,6 @@ def get_user_comments(username, reverse=False):
 
 # Get a final Hater Score. 100 is the worst, 0 is the best.
 def calculate_score(predictions):
-    print "testing CALC..."
     total_score = []
     for s in predictions:
         total_score.append(s[1])
@@ -195,7 +194,6 @@ print 'All loaded Captn\'!'
 # Setting up our base route
 @app.route('/')
 def display_form():
-    print "testing DISPLAY..."
     return render_template('hater-form.html')
 
 # # Setting up reddit
@@ -206,12 +204,11 @@ def display_form():
 # Setting up a way to get our form data
 @app.route('/hater-score', methods=['POST'])
 def predict_hate():
-    print "testing HATE..."
     # Saving our data from the form so we can use it.
     network = request.form['network']
     username = request.form['username']
     reverse = request.form['reverse']
-    print "testing... youaofuoasydfoasd"
+
     print request
     if network == 'hn':
         user_page = 'https://news.ycombinator.com/user?id='
@@ -224,14 +221,14 @@ def predict_hate():
     if network == 'twitter':
         user_page = 'http://www.twitter.com/'
         temp = get_twitter_comments(username, reverse=reverse)
-    print "twhowtwerwerhererrrr"
+
     comments = []
 
     text = filter(None, temp['c'])
     predictions = user_score(temp, vect, clf)
     ids = temp['id']
     colors = []
-    print "NO IDEADDDDD"
+
     for p in predictions:
         # if p[1] > .2:
             # colors.append( "rgba(89, 255, 160, "+str(p[0]+.01)+")" )

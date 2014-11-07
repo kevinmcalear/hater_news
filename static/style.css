@@ -399,8 +399,8 @@ h1.logo.twitter {
 
 .social-item {
   display: inline-block;
-  /*width: 90px;*/
-  margin-right: 35px;
+  width: 90px;
+  /*margin-right: 35px;*/
   /*line-height: 18px;*/
   height: 80px;
   vertical-align: bottom;

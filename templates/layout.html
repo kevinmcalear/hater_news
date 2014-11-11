@@ -228,6 +228,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("50");
                     $('#searchbox').attr('placeholder','ex. try \'walshemj\'');
                     $('#usrnm').text('Hacker News');
+                    history.pushState(null, null, '?network=hn');
                   });
 
                 }
@@ -254,6 +255,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("45");
                     $('#searchbox').attr('placeholder','ex. try \'DownvoteDaemon\'');
                     $('#usrnm').text('Reddit');
+                    history.pushState(null, null, '?network=reddit');
                   });
                 }
                 if ( network == 'twitter' ) {
@@ -279,6 +281,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("500");
                     $('#searchbox').attr('placeholder','ex. try \'LILSAVTHESAVAGE\'');
                     $('#usrnm').text('Twitter');
+                    history.pushState(null, null, '?network=twitter');
                   });
                 }
             });

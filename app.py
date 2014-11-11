@@ -26,7 +26,6 @@ import os
 
 
 
-
 # Get all of a twitter user's comments
 def get_twitter_comments(username, limit=500, reverse=False):
     comments = []
@@ -34,11 +33,11 @@ def get_twitter_comments(username, limit=500, reverse=False):
     public_tweets = api.user_timeline(screen_name=username,count=limit)
 
     for tweet in public_tweets:
-        print tweet.text, tweet.id
+        print smart_str(tweet.text), smart_str(tweet.id)
         print "*************************************************************"
         print
-        comments.append(tweet.text)
-        ids.append('https://twitter.com/haternews/status/'+str(tweet.id))
+        comments.append(smart_str(tweet.text).decode('utf-8'))
+        ids.append('https://twitter.com/haternews/status/'+smart_str(tweet.id).decode('utf-8'))
 
     return { 'c':comments, 'id':ids }
 
@@ -121,7 +120,7 @@ def calculate_score(predictions):
     for s in predictions:
         total_score.append(s[1])
 
-    return np.mean(total_score) * 100
+    return np.mean( filter(None, total_score)) * 100
 
 # Get all a users comments and run them through my model
 def user_score(comments, my_vect, clf):
@@ -167,6 +166,16 @@ def user_score(comments, my_vect, clf):
 
 # Setting up app
 app = Flask(__name__)
+
+# ************ DEBUG CRAP ************
+# log to stderr
+import logging
+from logging import StreamHandler
+file_handler = StreamHandler()
+app.logger.setLevel(logging.DEBUG)  # set the desired logging level here
+app.logger.addHandler(file_handler)
+# ************ DEBUG CRAP ************
+
 print 'Setting up API Keys and Such...'
 # Setting up our user_agent
 reddit_user_agent = ("hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/")

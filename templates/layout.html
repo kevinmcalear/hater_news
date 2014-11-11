@@ -95,8 +95,21 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
             "Still crunching numbers... I know this takes a while.",
             "Haterz gon' hate. But now you know who the haterz are.",
           ];
+
+          function getUrlParameter(sParam) {
+              var sPageURL = window.location.search.substring(1);
+              var sURLVariables = sPageURL.split('&');
+              for (var i = 0; i < sURLVariables.length; i++)
+              {
+                  var sParameterName = sURLVariables[i].split('=');
+                  if (sParameterName[0] == sParam)
+                  {
+                      return sParameterName[1];
+                  }
+              }
+          }
+
           reverse = false;
-          network = 'hn'
 
           setTimeout( function() {
             $("input[name='reverse']").on('change', function(){
@@ -111,6 +124,85 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
            }, 200 );
 
           setTimeout( function() {
+            network = getUrlParameter('network') || 'hn';
+            if ( network == 'hn' ) {
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Hater News')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','rgba(255, 102, 0, 0.76)');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','rgba(255, 102, 0, 0.76)');
+                    $('.reddit')
+                      .removeClass('twitter')
+                      .removeClass('reddit')
+                      .addClass('hn');
+                    $('.twitter')
+                      .removeClass('reddit')
+                      .removeClass('twitter')
+                      .addClass('hn');
+                    $('#the-network').text("Hacker News").attr('href','http://news.ycombinator.com/');
+                    $('#limit').text("50");
+                    $('#searchbox').attr('placeholder','ex. try \'walshemj\'');
+                    $('#usrnm').text('Hacker News');
+                  });
+
+                }
+                if ( network == 'reddit' ) {
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Reddit Haterz')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','rgba(95, 153, 207, 0.68)');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','rgba(95, 153, 207, 0.68)');
+                    $('.hn')
+                      .removeClass('twitter')
+                      .removeClass('hn')
+                      .addClass('reddit');
+                    $('.twitter')
+                      .removeClass('hn')
+                      .removeClass('twitter')
+                      .addClass('reddit');
+                    $('#the-network').text("Reddit").attr('href','http://www.reddit.com/');
+                    $('#limit').text("45");
+                    $('#searchbox').attr('placeholder','ex. try \'DownvoteDaemon\'');
+                    $('#usrnm').text('Reddit');
+                  });
+                }
+                if ( network == 'twitter' ) {
+                  $('h1.logo').fadeOut( "slow", function() {
+                    // Animation complete.
+                    $('h1.logo')
+                      .text('Twitter Trollz')
+                      .append('<p style="padding-top:20px;text-shadow:none;font-size:13px;color:rgb(155, 155, 155);font-weight:100;">Haterz gon\' hate. But now you know who the haterz are.</p>')
+                      .fadeIn('slow');
+                    $('body')
+                      .css('color','#55acee');
+                    $('label[for=reverse_checkbox]')
+                      .css('color','#55acee');
+                    $('.hn')
+                      .removeClass('reddit')
+                      .removeClass('hn')
+                      .addClass('twitter');
+                    $('.reddit')
+                      .removeClass('hn')
+                      .removeClass('reddit')
+                      .addClass('twitter');
+                    $('#the-network').text("Twitter").attr('href','http://www.twitter.com/');
+                    $('#limit').text("500");
+                    $('#searchbox').attr('placeholder','ex. try \'LILSAVTHESAVAGE\'');
+                    $('#usrnm').text('Twitter');
+                  });
+                }
+
+            // Social network radio button
             $("input:radio[name=social-network]").click(function() {
                 network = $(this).val();
                 if ( network == 'hn' ) {

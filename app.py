@@ -180,6 +180,11 @@ HNTWTR_CONSUMER_SECRET = os.environ.get('HNTWTR_CONSUMER_SECRET')
 HNTWTR_ACCESS_TOKEN = os.environ.get('HNTWTR_ACCESS_TOKEN')
 HNTWTR_ACCESS_TOKEN_SECRET = os.environ.get('HNTWTR_ACCESS_TOKEN_SECRET')
 
+print "cusumerkey:", HNTWTR_CONSUMER_KEY
+print "cusumersecret:", HNTWTR_CONSUMER_SECRET
+print "cusumertoken:", HNTWTR_ACCESS_TOKEN
+print "cusumertokensecret:", HNTWTR_ACCESS_TOKEN_SECRET
+
 # Setting up basic Twitter Auth Stuff Further
 auth = tweepy.OAuthHandler(HNTWTR_CONSUMER_KEY, HNTWTR_CONSUMER_SECRET)
 auth.set_access_token(HNTWTR_ACCESS_TOKEN, HNTWTR_ACCESS_TOKEN_SECRET)

@@ -125,7 +125,8 @@ def get_user_comments(username, network, reverse=False):
     if network == 'reddit':
         for i in user['data']['children']:
             comments.append(i['data']['body'])
-            ids.append(i['data']['link_url']+i['data']['id'])
+            # ids.append(i['data']['link_url']+i['data']['id'])
+            ids.append('http://www.reddit.com/r/'+i['data']['subreddit']+'/comments/'+i['data']['link_id'].split('_')[1]+'/'+i['data']['link_title']+'/'+i['data']['id'])
 
     return { 'c':comments, 'id':ids }
 

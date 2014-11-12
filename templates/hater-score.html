@@ -32,6 +32,9 @@
 <a href="{{ d.worst_comment.id }}" target="_blank" style="font-size:20px;max-width:800px;display:inline-block;">"{{ d.worst_comment.comment| truncate(250) | safe }}"</a>
 <br>
 <a href="{{ d.userpage }}" target="_blank" style="border-bottom: 1px solid rgba(0,0,0,0.25);font-size:17px;margin-top:10px;display:inline-block;">-{{ d.username }}</a>
+
+<!--<a href="https://twitter.com/intent/tweet?screen_name={{ d.username }}&text=Hater Score of: {{ d.score | round(2, 'ceil')}}% \"{{ d.worst_comment.comment| truncate(50) | safe }}\"" class="twitter-mention-button" data-size="large" data-related="{{ d.username }}">Tweet @{{ d.username }}'s Hater Score</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

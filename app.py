@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 # Setting up a connection to the internetz
 from urllib2 import urlopen
+from urllib2 import Request
 # Getting things to come back from json to a dict
 import json
 # Making that json pretty if needed
@@ -72,45 +73,59 @@ def get_reddit_user_comments(username, limit=45, reverse=False):
 # Building Out Some Functions to Ping The Hacker News API and Return Back Usable Lists Of Comments For Classifying
 
 # Get all of a user's comments
-def get_user_comments(username, reverse=False):
+def get_user_comments(username, network, reverse=False):
     comments = []
     ids = []
     reverse = ( reverse == 'true' )
-    url_usr_strt = "https://hacker-news.firebaseio.com/v0/user/"
-    url_itm_strt = "https://hacker-news.firebaseio.com/v0/item/"
-    url_end = ".json"
-    user = urlopen( url_usr_strt+username+url_end )
-    user = json.loads( user.read() )
-    if len(user['submitted']) > 45:
-        if reverse == True:
-            for c in user['submitted'][(len(user['submitted'])-46):len(user['submitted'])]:
-                item = urlopen( url_itm_strt+str(c)+url_end )
-                json_item = json.loads( item.read() )
-                if 'text' in json_item:
-                    print smart_str(json_item['id'])
-                    ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
-                    print smart_str(json_item['text'])
-                    comments.append(smart_str(json_item['text']))
-        else:
-            for c in user['submitted'][:46]:
-                item = urlopen( url_itm_strt+str(c)+url_end )
-                json_item = json.loads( item.read() )
-                if 'text' in json_item:
-                    print smart_str(json_item['id'])
-                    ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
-                    print smart_str(json_item['text'])
-                    comments.append(smart_str(json_item['text']))
-    else:
-        for c in user['submitted']:
-            item = urlopen( url_itm_strt+str(c)+url_end )
-            json_item = json.loads( item.read() )
-            if 'text' in json_item:
-                print smart_str(json_item['id'])
-                ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
-                print smart_str(json_item['text'])
-                comments.append(smart_str(json_item['text']))
+    if network == 'hn':
+        url_usr_strt = "https://hacker-news.firebaseio.com/v0/user/"
+        url_itm_strt = "https://hacker-news.firebaseio.com/v0/item/"
+        url_end = ".json"
 
-    # comments = dict((k,v) for k,v in comments.iteritems() if v is not None)
+    if network == 'reddit':
+        hdr = { 'User-Agent' : 'hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/' }
+        url_usr_strt = "http://www.reddit.com/user/"
+        url_end = "/comments.json?limit=100"
+
+    req = Request(url_usr_strt+username+url_end, headers=hdr)
+    user = urlopen( req )
+    user = json.loads( user.read() )
+
+    if network == 'hn':
+        if len(user['submitted']) > 45:
+            if reverse == True:
+                for c in user['submitted'][(len(user['submitted'])-46):len(user['submitted'])]:
+                    item = urlopen( url_itm_strt+str(c)+url_end )
+                    json_item = json.loads( item.read() )
+                    if 'text' in json_item:
+                        print smart_str(json_item['id'])
+                        ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
+                        print smart_str(json_item['text'])
+                        comments.append(smart_str(json_item['text']))
+            else:
+                for c in user['submitted'][:46]:
+                    item = urlopen( url_itm_strt+str(c)+url_end )
+                    json_item = json.loads( item.read() )
+                    if 'text' in json_item:
+                        print smart_str(json_item['id'])
+                        ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
+                        print smart_str(json_item['text'])
+                        comments.append(smart_str(json_item['text']))
+        else:
+            for c in user['submitted']:
+                item = urlopen( url_itm_strt+str(c)+url_end )
+                json_item = json.loads( item.read() )
+                if 'text' in json_item:
+                    print smart_str(json_item['id'])
+                    ids.append("https://news.ycombinator.com/item?id="+smart_str(json_item['id']))
+                    print smart_str(json_item['text'])
+                    comments.append(smart_str(json_item['text']))
+
+         # comments = dict((k,v) for k,v in comments.iteritems() if v is not None)
+    if network == 'reddit':
+        for i in user['data']['children']:
+            comments.append(i['data']['body'])
+            ids.append(i['data']['link_url']+i['data']['id'])
 
     return { 'c':comments, 'id':ids }
 
@@ -226,11 +241,12 @@ def predict_hate():
     print request
     if network == 'hn':
         user_page = 'https://news.ycombinator.com/user?id='
-        temp = get_user_comments(username, reverse=reverse)
+        temp = get_user_comments(username, 'hn', reverse=reverse)
 
     if network == 'reddit':
         user_page = 'http://www.reddit.com/user/'
-        temp = get_reddit_user_comments(username, reverse=reverse)
+        temp = get_user_comments(username, 'reddit', reverse=reverse)
+        # temp = get_reddit_user_comments(username, reverse=reverse)
 
     if network == 'twitter':
         user_page = 'http://www.twitter.com/'
@@ -262,7 +278,7 @@ def predict_hate():
         'userpage': user_page+username,
         'comments': comments,
         'score': calculate_score(predictions),
-        'hater_level': .001 if (hater_level[0] < .01) else p[1]+.01,
+        'hater_level': .001 if (hater_level[0] < .01) else hater_level[0]+.01,
         'lover_level': hater_level[1],
         'worst_comment': worst_comment[-1]
     }

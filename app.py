@@ -83,10 +83,10 @@ def get_user_comments(username, network, reverse=False):
         url_end = ".json"
 
     if network == 'reddit':
-        hdr = { 'User-Agent' : 'hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/' }
         url_usr_strt = "http://www.reddit.com/user/"
         url_end = "/comments.json?limit=100"
 
+    hdr = { 'User-Agent' : 'hater-news/1.0 by kevinmcalear | github.com/kevinmcalear/hater-news/' }
     req = Request(url_usr_strt+username+url_end, headers=hdr)
     user = urlopen( req )
     user = json.loads( user.read() )

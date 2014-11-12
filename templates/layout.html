@@ -148,6 +148,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("50");
                     $('#searchbox').attr('placeholder','ex. try \'walshemj\'');
                     $('#usrnm').text('Hacker News');
+                    $('.reverse-box').show();
                   });
 
                 }
@@ -174,6 +175,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("100");
                     $('#searchbox').attr('placeholder','ex. try \'DownvoteDaemon\'');
                     $('#usrnm').text('Reddit');
+                    $('.reverse-box').hide();
                   });
                 }
                 if ( network == 'twitter' ) {
@@ -199,6 +201,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("500");
                     $('#searchbox').attr('placeholder','ex. try \'LILSAVTHESAVAGE\'');
                     $('#usrnm').text('Twitter');
+                    $('.reverse-box').hide();
                   });
                 }
 
@@ -228,6 +231,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("50");
                     $('#searchbox').attr('placeholder','ex. try \'walshemj\'');
                     $('#usrnm').text('Hacker News');
+                    $('.reverse-box').show();
                     history.pushState(null, null, '?network=hn');
                   });
 
@@ -255,6 +259,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("100");
                     $('#searchbox').attr('placeholder','ex. try \'DownvoteDaemon\'');
                     $('#usrnm').text('Reddit');
+                    $('.reverse-box').hide();
                     history.pushState(null, null, '?network=reddit');
                   });
                 }
@@ -281,6 +286,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
                     $('#limit').text("500");
                     $('#searchbox').attr('placeholder','ex. try \'LILSAVTHESAVAGE\'');
                     $('#usrnm').text('Twitter');
+                    $('.reverse-box').hide();
                     history.pushState(null, null, '?network=twitter');
                   });
                 }
